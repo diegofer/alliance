@@ -89,8 +89,7 @@ function($, _, Backbone, tastypie, bootstrap, gmaps, Maps) {
 
         },
 
-        alClickPoly: function(event) {  
-                
+        alClickPoly: function(event) {                
             this.trigger("clickEnRegion", this.model.get('nombre'));
         },
 
