@@ -1,0 +1,490 @@
+[
+{
+    "pk": 1, 
+    "model": "auth.group", 
+    "fields": {
+        "name": "nacional", 
+        "permissions": [
+            25, 
+            26, 
+            22, 
+            23
+        ]
+    }
+},
+{
+    "pk": 2, 
+    "model": "auth.group", 
+    "fields": {
+        "name": "regional", 
+        "permissions": [
+            28, 
+            29, 
+            22, 
+            23
+        ]
+    }
+},
+{
+    "pk": 3, 
+    "model": "auth.group", 
+    "fields": {
+        "name": "local", 
+        "permissions": []
+    }
+},
+{
+    "pk": 1, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 0, 
+        "is_superuser": true, 
+        "last_login": "2013-06-03T20:45:57.200Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$J0WdMBxgP26y$bVIXLNHaPbTFatxrJm1clFUohtJ21jzKy4N7fyzN5JA=", 
+        "ambito": "total", 
+        "email": "diegofernando83@gmail.com"
+    }
+},
+{
+    "pk": 2, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 1, 
+        "is_superuser": false, 
+        "last_login": "2013-06-10T23:43:10.222Z", 
+        "groups": [
+            1
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$JEc69ldGpLl1$5SvWXmuC8ZC9qNSF+afnuScsC0XcSYT+EXWn0ogpAM4=", 
+        "ambito": "nacional", 
+        "email": "nacional@gmail.com"
+    }
+},
+{
+    "pk": 3, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 2, 
+        "is_superuser": false, 
+        "last_login": "2013-06-10T23:29:51.963Z", 
+        "groups": [
+            2
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$z8YSRbda7aSX$9FX3czNP5OUzMb9ms/Uzhc91TmSqVdUJ/uHXj/BJlMQ=", 
+        "ambito": "regional", 
+        "email": "regioncentral@gmail.com"
+    }
+},
+{
+    "pk": 4, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 2, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:42:45.736Z", 
+        "groups": [
+            2
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$kIMXNjFLyOxK$wrQuSb+2alvt/g0lxCJOZmwsexbrXJSTQTeXtLti2i0=", 
+        "ambito": "regional", 
+        "email": "regionsur@gmail.com"
+    }
+},
+{
+    "pk": 5, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 3, 
+        "is_superuser": false, 
+        "last_login": "2013-06-10T23:36:06.119Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$9cYaSOdXxgHH$4X0VouRjLUghlxM4oDTC6Rg1Zlyt2KYQcI3kniwovA8=", 
+        "ambito": "local", 
+        "email": "alianza.zarzal@gmail.com"
+    }
+},
+{
+    "pk": 6, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 3, 
+        "is_superuser": false, 
+        "last_login": "2013-05-31T19:47:43Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$yP0Y21k93Za4$rFEuKKYOtF7aP6e6Nmd6MJeGBq4csh/X0V7QZiJ/tDk=", 
+        "ambito": "local", 
+        "email": "alianza.armeniacentro@gmail.com"
+    }
+},
+{
+    "pk": 8, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 3, 
+        "is_superuser": false, 
+        "last_login": "2013-06-01T04:39:30.335Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$6pNQMeNYsUSz$NOsQhfp0cvr3VZMzpuHmDBs2z9Bsbox+3DIgk6HQbqA=", 
+        "ambito": "local", 
+        "email": "alianza.sevilla@gmail.com"
+    }
+},
+{
+    "pk": 9, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 3, 
+        "is_superuser": false, 
+        "last_login": "2013-06-03T06:03:31.029Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$bYEJGHfBTKF0$X4PFSyuThC8chpFAEHNCBWKr6IyIiDZaB95SkPyfkeg=", 
+        "ambito": "local", 
+        "email": "alianza.calarca@gmail.com"
+    }
+},
+{
+    "pk": 10, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 2, 
+        "is_superuser": false, 
+        "last_login": "2013-06-10T22:50:40.929Z", 
+        "groups": [
+            2
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$DiRWIwOQIhI4$VHv/ODK5rjqhLRt2XHdxcdjLqtWQk7fM4qH43DNVhaA=", 
+        "ambito": "regional", 
+        "email": "regionmecusab@gmail.com"
+    }
+},
+{
+    "pk": 11, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 2, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:36:57.187Z", 
+        "groups": [
+            2
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$69OXDMbeyr14$nAkzv/HUZsNeEj64qY2NyM4ZPIR1sTgdRGPptjKJA8U=", 
+        "ambito": "regional", 
+        "email": "regionpacifico@gmail.com"
+    }
+},
+{
+    "pk": 12, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 2, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:28:07.184Z", 
+        "groups": [
+            2
+        ], 
+        "user_permissions": [], 
+        "is_admin": true, 
+        "password": "pbkdf2_sha256$10000$bSuknApzC4Wq$UmBaGn2w9unCC3z4u5bJHfGYdVCyPWg9eRQGYIkoDxA=", 
+        "ambito": "regional", 
+        "email": "regionsuroriental@gmail.com"
+    }
+},
+{
+    "pk": 13, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 10, 
+        "is_superuser": false, 
+        "last_login": "2013-06-04T16:25:32.827Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$4z2SsNlnEQus$dLBAfNmxs2Wk8fj2PIGj4/6KRFoyZ9j4shKuJb520Jc=", 
+        "ambito": "local", 
+        "email": "alianza.sancristobal@gmail.com"
+    }
+},
+{
+    "pk": 14, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 12, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:31:20.828Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$T3y6ovCouuys$4fpRnllP5ZEAnFDhHpxXE5L6O8rAsZVDZCavsNcnOPg=", 
+        "ambito": "local", 
+        "email": "alianza.neivacentro@gmail.com"
+    }
+},
+{
+    "pk": 15, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 11, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:39:29.931Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$WdcCdnE6PFnw$/+W9zz/5YQ5g1AVJ9pxFmW+fbrLTY3qKcu4YWIX4Flw=", 
+        "ambito": "local", 
+        "email": "alianza.calisanbosco@gmail.com"
+    }
+},
+{
+    "pk": 16, 
+    "model": "usuarios.usuario", 
+    "fields": {
+        "is_active": true, 
+        "user_padre": 4, 
+        "is_superuser": false, 
+        "last_login": "2013-06-11T01:43:47.580Z", 
+        "groups": [
+            3
+        ], 
+        "user_permissions": [], 
+        "is_admin": false, 
+        "password": "pbkdf2_sha256$10000$HkyxiQtaJvGl$F6XPfsTRafgMLg9R4SHn8QRoIS/9c7V5VhJN/Ggo/wY=", 
+        "ambito": "local", 
+        "email": "alianza.popayancentral@gmail.com"
+    }
+},
+{
+    "pk": 1, 
+    "model": "db.region", 
+    "fields": {
+        "iglesias": 3, 
+        "center": "7.34052239284,-75.5859375001", 
+        "zoom": "6", 
+        "user": 3, 
+        "path": "sr`X`dzmMgmMePmxi@jqdCuvYsb^aep@smTs`v@_e_@mwy@~oUkcj@_~[_viAhvIyxk@~re@icAfppAqzmBfjp@yhTgnc@g`PrqGokEgjp@mie@umTcsmBfr}Bgl`DitcAccoCownCu`R}xeAw{s@ivI__oB_mEudoA}nr@jznB}byAxifCsmT`}s@~zK`ok@inc@bvdA{wFznRiqEfeMvoHx_UtoHnkAxcYveK`iGvzMc~EzbRi`]|bRufQh{^y{DfwKwfFd~FhjB~q@xlJ~gPfqBr~BqiAluJl|Gde[y~T{uFwmIwjK{rBybDcxGtiK{mDveNfhKtkKq`CvqKt_EjgU}|I`{NyVpXm|S{pu@mw}@n{v@{iKdw|A|~eBbkeArwg@z}mA~zKr_nA?jfRhdPgyK|d_@x_EtfV`~ProPzfDjpDsQrlKzbExeElKvrI`jIzoGpzNaxBhrIlwFxoOwwDxzH|yFzyKnqA|cE`WtcAgk@pjFjgEbsAzb@rfEsl@j{Af_Brd@nvEfvAtn@xQx_AhjDdnD`bBl|AjtF}Lj~FjoIjzYzdCb}Dh[rhAkd@|t@xfCbcF~`Bpl@d}B~uA``@|_AaUxjGjwE|bDfDx_Aj`DraAhO[ltApkAkPbr@lnB|iBxK`AdfCgoAf`@", 
+        "nombre": "Regi\u00f3n Central"
+    }
+},
+{
+    "pk": 2, 
+    "model": "db.region", 
+    "fields": {
+        "iglesias": 1, 
+        "center": "1.84257551019,-77.3849487305", 
+        "zoom": "8", 
+        "user": 4, 
+        "path": "yhxR`wfxMlcPicm@qcA}nr@xuI}oUmcPka@ulEsb^bqVioF?_lb@qug@i}LnsHqst@r|L_wXz~MhoFjzZi}L`_N?vlTs{ZfxJstWvjb@|aOjhR_fBhxJ~lEevXtmTbtf@fjp@ycP~vXn{x@hkSia@hrVj}[~lEb{Z_{KxzK_pU`dPivIha@smT`kSu_Nhj_A~aOp_NhhCnfQguf@f}Lf`]tcAh|i@erVrmTsgo@jhCuvXr_NtvXhcm@zaOrcAqqG~aObrVrtWnfQihCdkSs_NzvXrfQnst@~zKpia@_iRtqG~zK_tHpvdAeqs@ihC}zKrwg@gkSja@foFfnc@o{Z|c|@u`l@ttWfvI|hRy~y@rdkAore@|re@okb@i`]zsHqzw@ygmAfyYydlAstWysW{byAxsWufQeoU}}[qa|@iuf@", 
+        "nombre": "Regi\u00f3n Sur"
+    }
+},
+{
+    "pk": 3, 
+    "model": "db.region", 
+    "fields": {
+        "iglesias": 1, 
+        "center": "4.7935053438,-73.9682006836", 
+        "zoom": "9", 
+        "user": 10, 
+        "path": "obyY|d{gMqkT_{Kywi@~eBuxv@onMkva@ytAiuQbwBqme@clL}}]ioFyvJor@cnF~lE{zDesOqvBceIzzDywQwtQouPtn^_tHpcId~EtaPelL~gKja@vlUicm@ime@yhh@zwb@whh@j{Lor@~aPonMto^_mElnF~lEzsXrjDxgCyeX`n]weXqtA{bHx{Lm|Sy{L_{KdnbBr_NszSxhh@bjDl_d@ern@jvIvvBrmTxmUhkSzyb@ogJfyZrlq@n~MxeXcP~aOfwYbzRpuI_fBz`OhyYomM~eB_hCblLeaf@nr@atPsxJidIbPevQjdP~jLbzRmoNx~TptArfQ", 
+        "nombre": "Regi\u00f3n Mecusab"
+    }
+},
+{
+    "pk": 4, 
+    "model": "db.region", 
+    "fields": {
+        "iglesias": 1, 
+        "center": "3.7184700579,-76.6117858887", 
+        "zoom": "9", 
+        "user": 11, 
+        "path": "k~yWvquwMm~MucAk~M}yh@`nU_~[fjDspd@deQsia@mgRgjp@ipV?akc@hkSguIi`]pvvA{hyBvxx@rpd@~kc@rqGje`@~lEfjVztAqcAljZc`GdeImsHrwg@|vBxbH|fJ_tHn|[xpNkr@tfQulErmTm{S~eBzfJxs^ncPbwB}~Mxs^nkLr{ZgqGxpNhyCd~Ew}TngJ~vBluPgqGnr@me`@g`]esWypNqmMumTyb_@?y`OirV_hC~sHtoN~hRijDrfQouIdPgwY_pU~gCltm@", 
+        "nombre": "Regi\u00f3n Pacifico "
+    }
+},
+{
+    "pk": 5, 
+    "model": "db.region", 
+    "fields": {
+        "iglesias": 1, 
+        "center": "2.6363094056,-75.506286621", 
+        "zoom": "8", 
+        "user": 12, 
+        "path": "waaSxqmfMu_e@ucAwsn@spd@{`Od~Em{DxpNe|[{M}u`@cyGmqKrrIlnDliSkmNpbWwh@`xU{ji@mjMmkh@zRmyUcqKgz_AkcC}iUnLqbBvqP`Edid@t_Ylq\\nqLfg^leKycExuLvhJ|mK{lF`dW~}Jpa\\pwE`xZpb\\h`_@lqClca@z_Unri@lmSngv@rrc@`dE{h@fcPf_Fh|[r{CldXxv@tlEvX~z@fsDjzKucArpCfsDfmR}eMzqKnr@fl_@}kb@qGujDhuEi}Lz}EcP`sDnr@`fQdaKhyC~eBz|LcwBjtLrqGs~IfaKojDhvIfwQhvI{eBdeIz{SrtWkqGdsOqjDka@qcAtxJhxJbPtwF~lEjyCk}AltLjdEjyCtjDjxJka@`wBbiGmuEnyCcP`pJpfFpuEdoFglAj}AtcA~}E{tA~aDbiGfgJbPfnM{~IfnM{aZjcL}i@}lEo`GjjOnr@ghCsfQbsD{{DscAsqGfuPoyCjdSuzAtpm@x_Sz`SjJfiMqof@f|Npy{@{cVrua@uwy@|DafKh|YbsRref@tkQhoBy}FnnKhwTlnWjud@_mK~phAj`ZltDuvR~oi@nhFd~Oe_E|iEwhaAq@oyx@kuWsmFoeIsbWhxUmdj@rmw@_zu@~cZcrfBymO}fMpgj@{y|@azMo`Qlla@ufK~ja@y`_Ae}[y`iB`ih@qwyB{vM}ek@ryf@kgrAqxa@gw[kvr@iibC_fjAoyqAoka@tbsAaqpAlvaAanoAht_B_cHt{h@f}q@te|@icw@dzq@{jsAlsw@ml@r|~@krn@ncmBuvy@dzFalZ~gWik~@epY}cj@fmLghJlss@", 
+        "nombre": "Region Sur Oriental"
+    }
+},
+{
+    "pk": 1, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "4.3941362,-76.0744466", 
+        "region": 1, 
+        "zoom": "15", 
+        "proposito": "Somos una comunidad de personas que encontramos en Dios una fe que nos mantiene firmes, una esperanza que nos hace so\u00f1ar y un amor que nos cura el alma y ayudamos a los dem\u00e1s a conectarse con Dios por medio de Jesucristo su hijo.", 
+        "sede": "Principal", 
+        "ciudad": "Zarzal", 
+        "user": 5, 
+        "address": "Calle 7 # 11-46, Zarzal - Valle del Cauca, Colombia", 
+        "codigo": "107", 
+        "depto": "Valle del Cauca"
+    }
+},
+{
+    "pk": 2, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "4.5497757393,-75.6674604439", 
+        "region": 1, 
+        "zoom": "15", 
+        "proposito": "", 
+        "sede": "Cental", 
+        "ciudad": "Armenia", 
+        "user": 6, 
+        "address": "Calle 9N # 19-00, Armenia - Quind\u00edo, Colombia", 
+        "codigo": "101", 
+        "depto": "Quind\u00edo"
+    }
+},
+{
+    "pk": 3, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "4.5295,-75.64021", 
+        "region": 1, 
+        "zoom": "14", 
+        "proposito": "", 
+        "sede": "Principal", 
+        "ciudad": "Calarca", 
+        "user": 9, 
+        "address": "Calarc\u00e1, Calarca - Quind\u00edo, Colombia", 
+        "codigo": "105", 
+        "depto": "Quind\u00edo"
+    }
+},
+{
+    "pk": 4, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "4.73787125589,-74.0275649907", 
+        "region": 3, 
+        "zoom": "11", 
+        "proposito": "", 
+        "sede": "San Cristobal Norte", 
+        "ciudad": "Bogot\u00e1", 
+        "user": 13, 
+        "address": "Carrera 8B # 161A-40, Bogot\u00e1 - Cundinamarca, Colombia", 
+        "codigo": "305", 
+        "depto": "Cundinamarca"
+    }
+},
+{
+    "pk": 5, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "2.9303939,-75.2829335", 
+        "region": 5, 
+        "zoom": "13", 
+        "proposito": "", 
+        "sede": "Neiva Centro", 
+        "ciudad": "Neiva", 
+        "user": 14, 
+        "address": "Carrera 12 # 9-45, Neiva - Huila, Colombia", 
+        "codigo": "212", 
+        "depto": "Huila"
+    }
+},
+{
+    "pk": 6, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "3.44343414321,-76.5304161251", 
+        "region": 4, 
+        "zoom": "17", 
+        "proposito": "", 
+        "sede": "San Bosco", 
+        "ciudad": "Cali", 
+        "user": 15, 
+        "address": "Carrera 14 # 11-62, Cali - Valle del Cauca, Colombia", 
+        "codigo": "401", 
+        "depto": "Valle del Cauca"
+    }
+},
+{
+    "pk": 7, 
+    "model": "db.iglesia", 
+    "fields": {
+        "web": "", 
+        "tel": "", 
+        "geolocation": "2.44184198544,-76.6114728442", 
+        "region": 2, 
+        "zoom": "14", 
+        "proposito": "", 
+        "sede": "Central", 
+        "ciudad": "Popay\u00e1n", 
+        "user": 16, 
+        "address": "Carrera 11 # 6-20, Popay\u00e1n - Cauca, Colombia", 
+        "codigo": "501", 
+        "depto": "Cauca"
+    }
+}
+]

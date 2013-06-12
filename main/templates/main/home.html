@@ -1,0 +1,120 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{STATIC_URL}}main/app/css/main.css">
+{% endblock css %}
+
+{% block body %} 
+
+<div id="wrapper">
+	<div id="contenedor-mapa">
+		<div id="map_canvas">
+              <div class="progress progress-striped active">
+                <div class="bar" style="width: 40%;"></div>
+              </div>      
+        </div>
+
+	</div>
+
+
+
+
+	<div id="topbar">
+
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Alliance</a>
+
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#{{ambito}}"><i class="icon-home"></i> Inicio</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="#">Link</a></li>
+                            <li class="divider-vertical"></li>
+                            <li><a href="#">Link</a></li>
+                            <li class="divider-vertical"></li>
+                        </ul>
+
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-user"></i>
+                                    {{ iglesia }}                                
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">
+                                            Ambito - {{user.ambito|capfirst}}
+                                        </a>
+                                    </li>
+                                    <li><a href="#editar/{{ambito}}/{{user.username}}">Editar {{ user.username }}</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a href="{% url "hacer_logout" %}">Salir</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end topbar -->
+
+    <div id="sidebar-right" style="width: 35%; height: 45%;">
+
+        <!-- {{msg}}
+        
+        
+        {% if user.ambito == 'local' %}   
+        
+        <div class='hero-unit'>
+            <h1>{{iglesia}}</h1>
+            <h3>{{ iglesia.user}}</h3>
+        
+        </div>
+        
+        <form class="form-horizontal" action="." method="POST">
+            {% csrf_token %}
+            {{formUsuario.as_p}}
+        </form>
+        
+        {% endif %} -->
+
+
+    </div>
+
+</div><!-- end wrapper -->
+
+<input id="ambito" type='hidden'  value='{{user.ambito}}' />
+
+{% endblock body %}
+
+
+
+{% block script %} 
+	<!--<script data-main="{{STATIC_URL}}main/app/js/config" src="{{STATIC_URL}}main/app/js/libs/require.js"></script>-->
+
+	<script src="{{STATIC_URL}}main/app/js/libs/require.js"></script>
+	<script>
+            require.config({
+                paths: {
+                    //"main": "{{STATIC_URL}}main/app/js/main-built"
+                }
+            });
+            //require(["main"])
+            require(["{{STATIC_URL}}main/app/js/config.js"]);
+    </script>
+
+{% endblock script%}

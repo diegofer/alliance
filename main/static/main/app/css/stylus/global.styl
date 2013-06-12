@@ -1,0 +1,578 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+/////////////// IMPORT  /////////////
+@import "help"
+@import "variables"
+@import "clases"
+
+
+/////////////// ESTRUCTURA Y DISENO GENERAL  /////////////
+
+body
+	background: cafe-osuro
+	#section-header
+		background cafe-osuro
+		border-bottom solid white 1px
+		box-shadow(5px 5px 20px #333333)
+		position relative
+		z-index 30
+
+	#section-content
+		gradientLinear( top, #C0BEBD, 0%, #f2efef, 40% )
+	#section-footer
+		background-color gris-claro2
+		padding 20px 0 40px 0
+
+
+//SSSSSSSSSSSSS SECTION HEADER  SSSSSSSSSSSSSSSSSSSSSSSSS//
+
+//ZZZZZZZZZZZZZ ZONE USER  ZZZZZZZZZZZZZZ//
+
+#zone-user-wrapper
+	padding-top: 30px;
+	#zone-user
+		background-color gris-claro1
+		borderRadius 10px 10px 0 0 
+
+//RRRRRRRRRRRRR USER BAR FIRST REGION  RRRRRRRRRRRRR//
+
+//RRRRRRRRRRRRR USER BAR SECOND REGION  RRRRRRRRRRRRR//
+
+#region-user-second
+	#block-block-1
+	#block-search-form
+		display none
+
+//ZZZZZZZZZZZZZ ZONE BRANDING  ZZZZZZZZZZZZZZ//
+
+#zone-branding
+	gradientLinear( top, #403820, 0%, #2D2214, 50% )
+
+//RRRRRRRRRRRRR BRANDING REGION  RRRRRRRRRRRRR//
+
+#region-branding
+	.logo-img
+		width 100%
+		margin-top 10px
+		margin-bottom 10px 
+		img
+			max-width 100%
+			width auto \\9
+
+//RRRRRRRRRRRRR MENU BRANDING REGION  RRRRRRRRRRRRR//
+
+#block-system-main-menu 
+	margin-bottom 1em
+	ul.menu 
+		margin:0
+		padding:0
+		list-style:none
+		position:relative
+		text-decoration none
+		font-weight bold
+		li 
+			list-style-image: none
+			list-style-type: none
+			a 
+				display: block
+				line-height: 1em
+				padding: 0.6em
+				outline:none
+				background:#333
+				color:#FFF
+				border:1px solid #666
+				text-decoration none
+			a:hover
+				background #000
+				text-decoration none
+			span.over 
+				background:#CCC
+				color: #000000
+				display: block
+				float: right
+				height: 29px
+				line-height: 30px
+				padding: 0 0.5em
+				text-align: center
+				cursor:pointer
+			span.over:hover 
+				background:#F90
+				color:#FFF
+#block-system-main-menu
+	ul.menu 		
+		ul 
+			margin:0
+			padding:0
+			display:none
+			li 
+				a 
+					text-indent:0
+					color:#000
+					background:#CCC
+					text-decoration:none
+				a:hover 
+					background: #EBEBEB
+				a.last
+					border-bottom: none
+
+//ZZZZZZZZZZZZZ ZONE MENU  ZZZZZZZZZZZZZZ//
+//RRRRRRRRRRRRR MENU REGION  RRRRRRRRRRRRR//
+
+//ZZZZZZZZZZZZZ ZONE HEADER  ZZZZZZZZZZZZZZ//
+//RRRRRRRRRRRRR HEADER FIRST REGION  RRRRRRRRRRRRR//
+
+//RRRRRRRRRRRRR HEADER SECOND REGION  RRRRRRRRRRRRR//
+
+// Estilos personlizados para el slide noticias del home..
+.flexslider
+	border none
+	margin 0 !important
+.flex-nav-container
+	margin-bottom 0
+	background red
+.flex-control-nav
+	bottom 20px
+
+//SSSSSSSSSSSSS SECTION CONTENT  SSSSSSSSSSSSSSSSSSSSSSSSS//
+//ZZZZZZZZZZZZZ ZONE PREFACE  ZZZZZZZZZZZZZZ//
+//RRRRRRRRRRRRR PREFACE FIRST REGION  RRRRRRRRRRRRR//
+//RRRRRRRRRRRRR PREFACE SECOND REGION  RRRRRRRRRRRRR//
+//RRRRRRRRRRRRR PREFACE THIRD REGION  RRRRRRRRRRRRR//
+
+//ZZZZZZZZZZZZZ ZONE CONTENT  ZZZZZZZZZZZZZZ//
+//RRRRRRRRRRRRR SIDEBAR FIRST REGION  RRRRRRRRRRRRR//
+
+
+//RRRRRRRRRRRRR CONTENT REGION  RRRRRRRRRRRRR//
+
+.node-type-nosotros
+	#region-content
+		font-size 16px
+		margin-top 20px
+		.region-content-inner
+			padding 10px
+			//background green
+
+//---------- Pagina Home --------------
+.contenido-home
+	position relative
+	.barra
+		height 18px
+		gradientLinear( top, #C0BEBD, 0%, #f2efef, 50% )
+
+#banners-home
+	margin-top 20px
+	div
+		margin-bottom 10px
+	img
+		display block
+		margin auto
+	a
+		text-decoration none
+	.barra
+		height 10px !important
+
+
+#tips-home
+	position relative
+	width 100%
+	margin-top 20px
+	margin-bottom 20px
+	article
+		borderRadius 10px
+		background-color #E7E6E5
+		width 100%
+		padding-bottom 10px	
+		margin-top 10px
+		a
+			position relative
+			bottom 10px
+			right 10px
+		h3
+			background #8A191D
+			color white
+			borderRadius 10px 10px 0 0
+			margin 0
+			font-size 1em
+			font-weight normal
+			font-family "Times New Roman", Georgia,Serif;
+			padding 5px
+			text-align center
+		div
+			text-align center
+		img
+			max-width 100%
+			width auto \\9
+			height auto
+			margin auto
+		p
+			padding 0 10px
+			font-size 14px
+			text-align justify
+			span
+				display block
+				text-align right
+				font-size 1em
+		a
+			position relative
+			display block
+			flotarDer()
+			margin-right 10px
+			margin-bottom 10px !important
+			text-decoration none
+			div
+				display inline-block
+				margin-left 5px
+				width 30px
+				height 30px
+				background url(../../../../default/files/img/assets/mas.png) no-repeat
+
+#preview-home
+	position relative
+	text-align center
+
+	article
+		width 337px 
+		display inline-block
+		vertical-align top
+		min-width 230px
+		margin-bottom 10px
+		text-align left
+		&:nth-child(2)
+			margin 0 1% 10px 1% 
+		&:nth-child(1)
+			#video
+				background rgb(223,223,221) 
+				padding 6% 0
+				borderRadius(15px)
+		h4 
+			margin 0 0 5px 0
+			font-family "Times New Roman", Georgia,Serif;
+			font-weight normal
+			padding-left 10px
+		img
+			max-width 100%
+			width auto \\9
+			height auto
+			margin auto
+			borderRadius(15px)
+//---------- Pagina Nuestra Historia --------------
+#nosotros-body 
+	position relative
+	//background purple
+
+	#articulo-nosotros
+	#videos
+		position relative
+
+	#articulo-nosotros
+		//background gray
+		p
+			padding  0 15px
+			text-align justify
+	#videos
+		//background blue
+		h2
+			font-family "Times New Roman", Georgia,Serif
+			color #8A191D
+		h3
+			margin 0
+			font-size 1em 
+		article
+		h2
+			margin-left 10px
+
+//---------- Pagina Mision --------------
+
+#mision-body
+	position relative
+	padding 20px
+	text-align justify
+	h3 
+	    text-align left
+	    font-family "Times New Roman", Georgia,Serif
+	#articulo1
+		div
+			padding-left 2%
+			width 100%
+			margin-bottom 15px
+			
+			img
+				display block
+				margin auto
+				max-width 290px
+				width 90%
+				border solid white 10px
+				transform(rotate(3deg))
+				box-shadow(10px 10px 7px #222222)
+	#articulo2
+	#articulo3
+	#articulo4
+		width 100%
+	#articulo2
+	#articulo4
+		p
+			padding-right 15px
+	#articulo3
+		h3
+		p
+			padding-left 15px
+
+//---------- Pagina Símbolos --------------
+
+#simbolos-body 
+	#globo
+		display block
+		width 150px
+		height 146px
+		background-image url(../../../../default/files/img/assets/simbolos-alianza.png)
+		margin auto
+	.nota 
+		display: none
+		visibility: hidden
+
+//---------- Pagina Fundaciones --------------
+#fundaciones
+	div
+		position relative
+		font-size 14px
+		margin-bottom 20px
+		text-align justify
+		img
+			flotarIz()
+			margin 0 10px 10px 0
+
+//---------- Pagina Fundaciones --------------
+#efi
+	ul 
+		margin-bottom 40px
+		margin-left 30px
+		h5
+			margin 10px 0 0px 0
+
+ //RRRRRRRRRRRRR SIDEBAR SECOND REGION  RRRRRRRRRRRRR//
+
+#block-views-nosotros-block
+	margin-top 20px	
+	.block-title
+		font-size 18px
+		font-weight normal
+		font-style italic
+		color white
+		borderRadius(5px)
+		gradientLinear( top, rgb(34,51,71), 0%, rgb(22,42,62), 50% )
+		padding 2px 5px
+		margin-bottom 20px
+	.views-field-title
+		font-size 16px
+	.views-field-field-linea
+		img
+			height 2px
+			display block
+	.views-field-body
+		font-size 14px		
+	.views-field-view-node
+		font-size 12px
+		text-align right
+	a
+		color black
+		font-weight bold
+		text-decoration none
+		&:hover
+			color gray
+
+#block-views-noticias-block-5 //bloque para categorias
+	margin-top 20px
+	.block-title
+		font-size 18px
+		font-weight normal
+		font-style italic
+		color white
+		borderRadius(5px)
+		gradientLinear( top, rgb(34,51,71), 0%, rgb(22,42,62), 50% )
+		padding 2px 5px
+	.item-list
+		ul
+			li
+				margin-top 10px
+				&:after
+					background:url('../../../../default/files/default_images/linea.jpg') transparent no-repeat
+					content '.'
+					display block
+					height 2px
+					margin-top 5px
+					overflow hidden
+				a
+					color #555
+					text-decoration none
+					font-weight bold
+					font-size 14px
+					&:hover
+						color #999
+
+
+//---------- Pagina NOTICIAS --------------
+
+// lista de noticias principal
+.node-noticias 
+	.field
+		text-align center
+		margin-bottom 30px
+		.view-header
+			text-align left
+			margin-bottom 20px
+			margin-top 20px
+			border-bottom solid #777 2px
+			h3
+				margin-bottom 0
+			a	
+				font-size 40px
+				font-family  Verdana,Helvetica,Arial,sans-serif
+				color #989898
+				text-decoration none
+				text-transform uppercase
+				&:hover
+					color #777
+		.views-row 
+			width 32%
+			min-width 220px
+			display inline-block
+			vertical-align top
+			background-color #989898
+			padding 1% 0
+			margin-bottom 5px
+			.views-field
+				width 90%
+				margin auto
+			.views-field-title
+				text-align left
+				height 30px
+				overflow hidden
+				a
+					text-decoration none
+					font-weight bold
+					font-size 18px
+					color white
+			.views-field-body
+				font-size 12px
+				text-align justify
+				height 75px
+				overflow hidden
+				margin-top 5px
+			.views-field-body
+			.views-field-title
+				color white
+// noticias agrupadas en taxonomia	
+.page-taxonomy-term
+	.node-noticia
+		width 48%
+		min-width 220px
+		display inline-block
+		vertical-align top
+		background-color #989898
+		padding 1% 0
+		margin-top 20px
+		.field
+			width 90%
+			margin auto
+		.field-name-title
+			overflow hidden
+			height 30px
+			h2
+				line-height 30px
+			a
+				text-decoration none
+				font-weight bold
+				font-family  Verdana,Helvetica,Arial,sans-serif
+				font-size 18px
+				color white
+		.field-name-field-imagen
+			margin-top 5px
+		.field-name-body
+			font-size 12px
+			text-align justify
+			height 75px
+			overflow hidden
+			margin-top 5px
+			color white
+// noticia individual
+.node-type-noticia
+	.node-noticia
+		.field-name-title
+			margin-top 10px
+			h2
+				padding 0
+				margin 0
+				color #444
+		.field-name-post-date
+			margin-bottom 20px
+			div
+				color rojo
+				display inline-block
+		.field-name-body
+			text-align justify
+		.field-name-field-categorias 
+			margin-top 10px
+			div
+				color rojo
+				display inline-block
+
+
+//ZZZZZZZZZZZZZ ZONE POSTSCRIPT  ZZZZZZZZZZZZZZ//
+//RRRRRRRRRRRRR POSTSCRIPT FIRST REGION  RRRRRRRRRRRRR//
+//RRRRRRRRRRRRR POSTSCRIPT SECOND REGION  RRRRRRRRRRRRR//
+//RRRRRRRRRRRRR POSTSCRIPT THIRD REGION  RRRRRRRRRRRRR//
+//RRRRRRRRRRRRR POSTSCRIPT FOURTH REGION  RRRRRRRRRRRRR//
+
+//SSSSSSSSSSSSS SECTION FOOTER  SSSSSSSSSSSSSSSSSSSSSSSSS//
+//ZZZZZZZZZZZZZ ZONE FOOTER  ZZZZZZZZZZZZZZ//
+
+//RRRRRRRRRRRRR FOOTER FIRST REGION  RRRRRRRRRRRRR//
+
+#region-footer-first
+	background gris-oscuro
+	borderRadius(10px)
+
+	.derechos-reservados
+		text-align center
+		font-size 11px
+
+#block-footer-sitemap-footer-sitemap
+	text-align center
+	position relative 
+	.main-menu
+		>ul
+			>li
+				float none
+				min-width 120px
+				width 17%
+				display inline-block
+				vertical-align top
+				>a
+					display block
+					width 100%
+					height 30px
+					line-height 30px
+					color #444
+				ul
+					li
+						margin-bottom 5px
+						&:hover
+							background #44C2FB
+
+
+
+
+//RRRRRRRRRRRRR FOOTER SECOND REGION  RRRRRRRRRRRRR//
+
+
+
+
+
+
+
+	
+
+
+		

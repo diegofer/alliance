@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es_ES">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="robots" content="noindex,nofollow,noarchive,noodp,nosnippet">
+	<title> {% block title %} {% endblock %} | Alliance</title>
+	<meta name="viewport" content="width=device-width , initial-scale=1 ,maximum-scale=1" /> 
+
+	<link rel="stylesheet" href="{{STATIC_URL}}main/app/src/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/font-awesome/css/font-awesome.min.css">
+    {% block css %}{% endblock %}
+
+</head>
+<body>
+	<!--[if lt IE 8]>
+		<div class="hero-unit">
+	        <p >Esta apiclación no esta hecha para navegadores tan obsoletos. Use Navegadores como Chrome, Firefox o Internet Explorer 9</p>
+	    </div>
+	<![endif]-->
+	{% block body %}{% endblock %}
+
+	{% block script %} {% endblock %}
+	
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}Login{% endblock %}
+
+{% block css %}
+	<style type="text/css" media="screen">
+		body{
+			background-color: #333;
+		}
+	</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="confirmacion" class="modal">
+	<div class="modal-header">
+		<h3>Alliance <small>Estadísticas para comunidades</small></h3>
+	</div>
+	<div class="modal-body">
+
+
+		{% if msg  %}
+		    <p class="alert alert-block alert-error">
+		    	<i class="icon-exclamation-sign"></i>	
+				{{msg}}	
+			</p>	   
+		{% else %}
+			<p class="alert alert-block alert-info">
+				<i class="icon-info-sign"></i>
+				Ingresa tus datos para entrar en el sistema.	
+			</p>		    
+		{% endif %}
+
+		<div class="row-fluid">
+
+			<div class="span2">
+				<span class="label label-inverse"><i class="icon-cogs icon-4x"> </i></span>
+			</div>
+
+			<div class="span10">
+
+				<form class="form-horizontal" action="." method="POST">
+					{% csrf_token %}
+					<div class="control-group">
+						<label class="control-label">Usuario</label>
+					    <div class="controls">
+					    	<div class="input-prepend">
+						    	<span class="add-on"><i class="icon-user"></i></span>
+						    	{{ form.username }}
+						  </div>
+					    </div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label">Contraseña</label>
+					    <div class="controls">
+					    	
+					    	<div class="input-prepend">
+						    	<span class="add-on"><i class="icon-key"></i></span>
+						    	{{ form.password }}
+						  </div>
+					    </div>
+					</div>
+
+					<div class="control-group">
+					    <div class="controls">
+					    	<button  type="submit" class="btn btn-primary"><i class="icon-ok"></i>  Ingresar</button>
+					    </div>
+					</div>
+				</form>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		Todos los derechos reservados <br>
+		<strong> ©2013</strong>
+			
+	</div>
+
+</div>
+
+{% endblock %} 
