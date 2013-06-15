@@ -108,14 +108,20 @@
 	<!--<script data-main="{{STATIC_URL}}main/app/js/config" src="{{STATIC_URL}}main/app/js/libs/require.js"></script>-->
 
 	<script src='{{STATIC_URL}}main/app/js/libs/require.js'></script>
+
+    {% if debug %}
 	<script>
-            require.config({
-                paths: {
-                    //"main": "{{STATIC_URL}}main/app/js/main-built"
-                }
-            });
-            //require(["main"])
             require(["{{STATIC_URL}}main/app/js/config.js"]);
     </script>
+    {% else %}
+    <script>
+            require.config({
+                paths: {
+                    "main": "{{STATIC_URL}}main/app/js/main-built"
+                }
+            });
+            require(["main"])
+    </script>
+    {% endif %}
 
 {% endblock script%}
