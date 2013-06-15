@@ -1,0 +1,4 @@
+# Ignorar todo en esde directorio
+*
+# Excepto este archivo
+!.gitignore
