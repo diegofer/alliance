@@ -3,6 +3,8 @@ require.config({
     // Initialize the application with the main application file
     //deps: ["js/main"],
 
+    urlArgs: "bust=" + (new Date()).getTime(),
+
     baseUrl: "/static/main/app",    //Es la url que django nos ofrece.. vea el settings.py
     waitSeconds : 20,
     paths: {

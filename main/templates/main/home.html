@@ -58,6 +58,7 @@
                                         </a>
                                     </li>
                                     <li><a href="#editar/{{ambito}}/{{user.username}}">Editar {{ user.username }}</a></li>
+                                    <li><a href="#">Debug {{ debug }}</a></li>
 
                                 </ul>
                             </li>
@@ -106,7 +107,7 @@
 {% block script %} 
 	<!--<script data-main="{{STATIC_URL}}main/app/js/config" src="{{STATIC_URL}}main/app/js/libs/require.js"></script>-->
 
-	<script src="{{STATIC_URL}}main/app/js/libs/require.js"></script>
+	<script src='{{STATIC_URL}}main/app/js/libs/require.js'></script>
 	<script>
             require.config({
                 paths: {

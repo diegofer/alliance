@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm #, UserCreationForm
+from django.conf import settings
 
 from modulos.usuarios.models import Usuario
 from modulos.db.models import Iglesia
@@ -35,7 +36,7 @@ def home(request):
 				ctx = {'form':AuthenticationForm(), 'msg':msg}
 				return render_to_response('main/login.html', ctx, context_instance=RequestContext(request))
 			else:
-				ctx = {'iglesia': iglesia}
+				ctx = {'iglesia': iglesia, 'debug':settings.DEBUG}
 
 
 		return render_to_response('main/home.html', ctx, context_instance=RequestContext(request))
