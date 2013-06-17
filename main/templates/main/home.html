@@ -115,13 +115,16 @@
     </script>
     {% else %}
     <script>
-            require.config({
-                paths: {
-                    "main": "{{STATIC_URL}}main/app/js/main-built"
-                }
-            });
-            require(["main"])
+        require.config({
+            urlArgs: "bust=v5",
+            paths: {
+                "main": "{{STATIC_URL}}main/app/js/main-built"
+            }
+        });
+        require(["main"])
     </script>
     {% endif %}
+
+    
 
 {% endblock script%}

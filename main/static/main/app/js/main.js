@@ -66,8 +66,8 @@ function($, _, Backbone, tastypie,
 
             return view;
         },
-
-
+        
+        
     });
 
 
