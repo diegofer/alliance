@@ -1,0 +1,82 @@
+| {% extends 'main/base.html' %}
+
+| {% block title %} Home {% endblock %}
+
+|{% block css %}
+|	<link rel="stylesheet" href="{{STATIC_URL}}main/app/css/main.css">
+|{% endblock css %}
+
+|{% block body %} 
+
+div#wrapper
+
+	div#contenedor-mapa
+		div#map_canvas 
+
+	div.topbar
+		div.navbar.navbar-inverse
+			div.navbar-inner
+				div.container
+
+					a(href='#').brand Alliance
+
+					a(data-toogle='collapse', data-target='.nav-collapse').btn.btn-navbar
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+
+					div.nav-collapse.collapse
+						ul.nav
+							li.active
+								a(href="{{ambito}}") 
+									i.icon-home
+									| Inicio
+							li.divider-vertical
+							li: a(href='#') Link
+								
+							li.divider-vertical
+							li: a(href="#") Link
+								
+							li.divider-vertical
+
+						ul.nav.pull-right
+							li.dropdown
+								a(href="#", data-toggle="dropdown").dropdown-toggle 
+									i.icon-user
+									| {{ iglesia }}                                
+									b.caret
+								ul.dropdown-menu
+									li
+										a(href="#") Ambito - {{user.ambito|capfirst}}					
+									li
+										a(href="#editar/{{ambito}}/{{user.username}}") Editar {{ user.username }}			
+									li
+										a(href="#") Debug {{ debug }}
+							li
+								a(href="{% url 'hacer_logout' %}") Salir
+	div(style="width: 35%; height: 45%;")#sidebar-right 
+input(type='hidden',value='{{user.ambito}}')#ambito
+|{% endblock body %}
+
+|{% block script %}
+script(src='{{STATIC_URL}}main/app/js/libs/require.js')
+
+|{% if debug %}
+script
+	require(["{{STATIC_URL}}main/app/js/config.js"]);
+
+|{% else %}
+script
+	require.config({
+		urlArgs: "bust=v2",
+		paths: {
+			"main": "{{STATIC_URL}}main/app/js/main-built"
+		}
+	});	
+	require(["main"])
+
+|{% endif %}
+
+
+|{% endblock script%} 
+
