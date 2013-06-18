@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from fabric.api import * 
 from fabric.contrib.console import confirm
 from fabric.colors import green, red 
@@ -27,15 +28,27 @@ def alistar_actualiacion():
 def actualizar_stage():
 	with cd('/var/www/alliance'):
 		run('git pull')
-		run('./manage.py collectstatic')
+		with prefix('workon alliance'):
+			run('./manage.py collectstatic')
 
 	# Reiniciar apache
-	run('sudo /etc/init.d/apache2 restart')
+	sudo("/etc/init.d/apache2 restart")
 
 
 # Git 
 def commit():
 	local("git add -p && git commit")
+
+def status():
+	with cd('/var/www/alliance'):
+		run('git status')
+def pull():
+	with cd('/var/www/alliance'):
+		run('git pull')
+
+def revisar():
+	with local('workon alliance'):
+		local('./manage.py validate')
 
 
 
