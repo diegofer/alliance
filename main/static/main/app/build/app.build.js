@@ -14,7 +14,7 @@
     uglify: {
         toplevel: true,
         ascii_only: true,
-        beautify: true,
+        //beautify: true,
         max_line_length: 1000,        
     },
 

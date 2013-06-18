@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from fabric.api import * 
 from fabric.contrib.console import confirm
 from fabric.colors import green, red 
@@ -10,54 +9,34 @@ RUTA_PROYECTO = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 #env.hosts = ['localhost', 'alianza@web348.webfaction.com']
 
 
-def servidor_local():
-	env.hosts = ['localhost']
+####################################################
+##              SERVIDOR DE DESAROLLO             ##
+####################################################
 
-
-def init():
-	
+# inicia el servidor de django y sentry y abre el navegador
+def init_local():
 	initSentry()
 	initAlliance()
 
+def consolidar_local():
+	test()
+	compilar_app_backbone()
 
-def alistar_actualiacion():
+
+### UTILES ###
+def compilar_app_backbone():
+	with lcd('main/static/main/app/build'):
+		local('node r.js -o app.build.js')
+	
 	versionar_home()
-
-
-
-def actualizar_stage():
-	with cd('/var/www/alliance'):
-		run('git pull')
-		with prefix('workon alliance'):
-			run('./manage.py collectstatic')
-
-	# Reiniciar apache
-	sudo("/etc/init.d/apache2 restart")
-
 
 # Git 
 def commit():
 	local("git add -p && git commit")
 
-def status():
-	with cd('/var/www/alliance'):
-		run('git status')
-def pull():
-	with cd('/var/www/alliance'):
-		run('git pull')
-
-def revisar():
-	with local('workon alliance'):
-		local('./manage.py validate')
-
-
-
+# Django
 def test():
 	local(django_manage('./manage.py test'))
-
-
-
-
 
 def initSentry():
 	with lcd("/host/dev/django/sentry"):
@@ -72,7 +51,51 @@ def django_manage(command='help', virtualenv='alliance'):
 	return "/bin/bash -l -c 'source /usr/local/bin/virtualenvwrapper.sh && workon " + virtualenv + " && " + command + "'"
 
 
-# VERSIONAR
+
+
+
+####################################################
+##              SERVIDOR DE PRUEBA                ##
+####################################################
+
+@hosts('localhost')
+def actualizar_stage():
+	with cd('/var/www/alliance'):
+		run('git pull')
+		with prefix('workon alliance'):
+			run('./manage.py collectstatic')
+
+	# Reiniciar apache
+	sudo("/etc/init.d/apache2 restart")
+
+
+
+
+def status():
+	with cd('/var/www/alliance'):
+		run('git status')
+def pull():
+	with cd('/var/www/alliance'):
+		run('git pull')
+
+def revisar():
+	with local('workon alliance'):
+		local('./manage.py validate')
+
+
+
+####################################################
+##              SERVIDOR DE PRODUCCION            ##
+####################################################
+
+
+
+
+####################################################
+##              UTILES                            ##
+####################################################
+
+# Versiona la llamada al archivo main-buil de la aplicacion backbone
 def versionar_home():
 	plantilla = os.path.join(RUTA_PROYECTO, 'main/templates/main/home.html')
 	print plantilla
