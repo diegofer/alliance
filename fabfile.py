@@ -61,12 +61,11 @@ def django_manage(command='help', virtualenv='alliance'):
 @hosts('localhost')
 def actualizar_stage():
 	with cd('/var/www/alliance'):
-		run('git pull')
+		pull()
 		with prefix('workon alliance'):
 			run('./manage.py collectstatic')
-
 	# Reiniciar apache
-	sudo("/etc/init.d/apache2 restart")
+	restart_apache()
 
 
 
@@ -74,14 +73,17 @@ def actualizar_stage():
 def status():
 	with cd('/var/www/alliance'):
 		run('git status')
+
 def pull():
-	with cd('/var/www/alliance'):
-		run('git pull')
+	run('git pull')
 
-def revisar():
-	with local('workon alliance'):
-		local('./manage.py validate')
-
+def git_log(loc=True):
+	cmd = 'git log --oneline --graph --decorate'
+	if loc: 
+		local(cmd) 
+	else: 
+		run(cmd)	
+		
 
 
 ####################################################
@@ -114,3 +116,7 @@ def versionar_home():
 	archivo_actualizado = open(plantilla, 'w')
 	archivo_actualizado.writelines(lineas_actualizadas)
 	archivo_actualizado.close()
+
+# Reiniciar apache
+def restart_apache():
+	sudo("/etc/init.d/apache2 restart")
