@@ -3,16 +3,12 @@ require([
 	'lodash',
 	'backbone',
 	'tastypie',  
-	'js/views/MapaView',
-    'js/views/RegionListView',
-    
+    'js/views/LMapView',
     'js/models/RegionCollection',
-    'js/models/IglesiaCollection',
-    'js/views/ChartView',
+    'js/models/IglesiaCollection'
 ], 
 
-function($, _, Backbone, tastypie, 
-    MapaView, RegionListView, RegionCollection, IglesiaCollection, ChartView) { 
+function($, _, Backbone, tastypie, LMapView, RegionCollection, IglesiaCollection) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
@@ -36,8 +32,10 @@ function($, _, Backbone, tastypie,
     		console.log('inicializando el router');
             console.log('Ambito: '+this.ambito);
 
-    		this.mapaView = new MapaView({ ambito: this.ambito });
-            this.regionListView = new RegionListView({ model: this.regionCollection });
+            this.lMapView = new LMapView();
+
+    		//this.mapaView = new MapaView({ ambito: this.ambito });
+            //this.regionListView = new RegionListView({ model: this.regionCollection });
 
             
     	},
@@ -54,7 +52,7 @@ function($, _, Backbone, tastypie,
             console.log('en Inicio');
             // var region = this.regionCollection.get('c2');
             // this.regionListView.showRegion(region.id);
-            this.charView = new ChartView({model:this.regionCollection});
+            //this.charView = new ChartView({model:this.regionCollection});
 
         },
 

@@ -14,13 +14,10 @@ require.config({
             "js/libs/jquery-1.9.0.min" 
         ], */
         
-        jquery:     "js/libs/jquery-1.9.0.min",           
+        jquery:     "js/libs/jquery-1.10.2.min",           
         validate :  "js/libs/jquery.validate",
         bootstrap:  "src/bootstrap/js/bootstrap",
-        async:      "js/libs/async",
-        gmaps:      "js/modules/gmaps",
-        goog:       'js/libs/goog',
-        propertyParser: 'js/libs/propertyParser',
+        leaflet:    "src/leaflet/leaflet-src",
         lodash:     "js/libs/lodash",
         backbone:   "js/libs/backbone-min",
         tastypie:   "js/libs/backbone-tastypie",
@@ -35,15 +32,7 @@ require.config({
 
         bootstrap: {
             deps: ["jquery"],
-        },
-
-        gmaps: {
-            deps: ["async"],
-        },
-
-        gcharts: {
-            deps: ["async"],
-        },
+        },       
 
         backbone: {
             deps: ["lodash", "jquery"],
