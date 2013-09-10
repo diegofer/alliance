@@ -10,11 +10,10 @@
 {% block body %} 
 
 <div id="wrapper">
+
 	<div id="contenedor-mapa">
 		<div id="map_canvas">
-              <div class="progress progress-striped active">
-                <div class="bar" style="width: 40%;"></div>
-              </div>      
+                   
         </div>
 
 	</div>
@@ -24,53 +23,53 @@
 
 	<div id="topbar">
 
-        <div class="navbar navbar-inverse">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">Alliance</a>
+        <div class="navbar navbar-inverse" role="navigation">
 
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="#{{ambito}}"><i class="icon-home"></i> Inicio</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="divider-vertical"></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="divider-vertical"></li>
-                        </ul>
+                <a href="#" class="navbar-brand">Alliance</a>
 
-                        <ul class="nav pull-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-user"></i>
-                                    {{ iglesia }}                                
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">
-                                            Ambito - {{user.ambito|capfirst}}
-                                        </a>
-                                    </li>
-                                    <li><a href="#editar/{{ambito}}/{{user.username}}">Editar {{ user.username }}</a></li>
-                                    <li><a href="#">Debug {{ debug }}</a></li>
-
-                                </ul>
-                            </li>
-
-                            <li><a href="{% url "hacer_logout" %}">Salir</a></li>
-                            
-                        </ul>
-                    </div>
-                </div>
             </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li ><a href="#">About</a></li>
+                    <li ><a href="#">Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profie  <b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">
+                                    Ambito - {{user.ambito|capfirst}}
+                                </a>
+                            </li>
+                            <li><a href="#editar/{{ambito}}/{{user.username}}">Editar {{ user.username }}</a></li>
+                            <li><a href="#">Debug {{ debug }}</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li> <a href="{% url "hacer_logout" %}"> Salir </a> </li>
+
+                </ul>
+
+            </div>
+
         </div>
+                
 
     </div> <!-- end topbar -->
 
@@ -117,7 +116,7 @@
     {% else %}
     <script>
         require.config({
-            urlArgs: "bust=v18",
+            urlArgs: "bust=v19",
             paths: {
                 "main": "{{STATIC_URL}}main/app/js/main-built"
             }

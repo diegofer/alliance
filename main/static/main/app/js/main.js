@@ -11,6 +11,7 @@
    
 require([
 	'jquery',
+    'bootstrap',
 	'lodash',
 	'backbone',
 	'tastypie',  
@@ -19,7 +20,7 @@ require([
     'js/views/LMapView'
 ], 
 
-function($, _, Backbone, tastypie, RegionCollection, IglesiaCollection, LMapView) { 
+function($, bootstrap, _, Backbone, tastypie, RegionCollection, IglesiaCollection, LMapView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...

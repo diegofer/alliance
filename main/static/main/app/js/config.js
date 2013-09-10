@@ -23,6 +23,9 @@ require.config({
 
         tpl:        "tpl",
         text:       "js/libs/require/text", 
+
+        dgo:       "js/dgo",
+
     },
 
     shim: { 
