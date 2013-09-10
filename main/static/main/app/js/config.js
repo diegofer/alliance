@@ -6,33 +6,29 @@ require.config({
     urlArgs: "bust=" + (new Date()).getTime(),
 
     baseUrl: "/static/main/app",    //Es la url que django nos ofrece.. vea el settings.py
+
     waitSeconds : 20,
+
     paths: {
-        // Libraries
-        /*jquery: [  
-            "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min",
-            "js/libs/jquery-1.9.0.min" 
-        ], */
-        
-        jquery:     "js/libs/jquery-1.10.2.min",           
-        validate :  "js/libs/jquery.validate",
+                
+        jquery:     "js/libs/jquery/jquery-1.10.2",           
+        validate :  "js/libs/jquery/jquery.validate",
+
         bootstrap:  "src/bootstrap/js/bootstrap",
         leaflet:    "src/leaflet/leaflet-src",
-        lodash:     "js/libs/lodash",
-        backbone:   "js/libs/backbone-min",
-        tastypie:   "js/libs/backbone-tastypie",
+
+        lodash:     "js/libs/backbone/lodash",
+        backbone:   "js/libs/backbone/backbone",
+        tastypie:   "js/libs/backbone/backbone-tastypie",
+
         tpl:        "tpl",
-        text:       "js/libs/text", 
+        text:       "js/libs/require/text", 
     },
 
     shim: { 
         /*jquery: {
             deps: ["async"],
-        },*/
-
-        bootstrap: {
-            deps: ["jquery"],
-        },       
+        },*/  
 
         backbone: {
             deps: ["lodash", "jquery"],
@@ -46,6 +42,10 @@ require.config({
         validate: {
             deps: ["jquery"]
         },
+
+        bootstrap: {
+            deps: ["jquery"],
+        }, 
 
     }
 

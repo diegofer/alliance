@@ -1,14 +1,25 @@
+// define(function (require) {
+
+//     "use strict";
+   
+//     var $                 = require('jquery'),
+//         Backbone          = require('backbone'),
+//         tastypie          = require('tastypie'),
+//         RegionCollection  = require('js/models/RegionCollection'),
+//         IglesiaCollection = require('js/models/IglesiaCollection'),
+//         LMapView          = require('js/views/LMapView');
+   
 require([
 	'jquery',
 	'lodash',
 	'backbone',
 	'tastypie',  
-    'js/views/LMapView',
     'js/models/RegionCollection',
-    'js/models/IglesiaCollection'
+    'js/models/IglesiaCollection',
+    'js/views/LMapView'
 ], 
 
-function($, _, Backbone, tastypie, LMapView, RegionCollection, IglesiaCollection) { 
+function($, _, Backbone, tastypie, RegionCollection, IglesiaCollection, LMapView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...

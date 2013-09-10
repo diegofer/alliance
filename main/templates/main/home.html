@@ -108,7 +108,7 @@
 {% block script %} 
 	<!--<script data-main="{{STATIC_URL}}main/app/js/config" src="{{STATIC_URL}}main/app/js/libs/require.js"></script>-->
 
-	<script src='{{STATIC_URL}}main/app/js/libs/require.js'></script>
+	<script src='{{STATIC_URL}}main/app/js/libs/require/require.js'></script>
 
     {% if debug %}
 	<script>
@@ -117,7 +117,7 @@
     {% else %}
     <script>
         require.config({
-            urlArgs: "bust=v15",
+            urlArgs: "bust=v18",
             paths: {
                 "main": "{{STATIC_URL}}main/app/js/main-built"
             }
