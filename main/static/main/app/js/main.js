@@ -62,6 +62,7 @@ function($, bootstrap, _, Backbone, tastypie, RegionCollection, IglesiaCollectio
         inicio: function() {
             //this.navigate(this.ambito, true);
             console.log('en Inicio');
+            this.lMapView.irInicio();
             // var region = this.regionCollection.get('c2');
             // this.regionListView.showRegion(region.id);
             //this.charView = new ChartView({model:this.regionCollection});

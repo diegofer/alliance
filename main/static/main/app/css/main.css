@@ -1,8 +1,70 @@
-html,body{margin:0;padding:0;height:100%;background:#666 !important;background:-moz-linear-gradient(top,#555 0%,#666 50%) !important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#555),color-stop(50%,#666)) !important;background:-webkit-linear-gradient(top,#555 0%,#666 50%) !important;background:-o-linear-gradient(top,#555 0%,#666 50%) !important;background:-ms-linear-gradient(top,#555 0%,#666 50%) !important;background:linear-gradient(top,#555 0%,#666 50%) !important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#555,endColorstr=#666,GradientType=0 );-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#555, endColorstr=#666)"}
-#wrapper{position:absolute;left:10px;top:10px;right:10px;bottom:10px;background:#333 !important;background:-moz-linear-gradient(top,#222 0%,#333 50%) !important;background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#222),color-stop(50%,#333)) !important;background:-webkit-linear-gradient(top,#222 0%,#333 50%) !important;background:-o-linear-gradient(top,#222 0%,#333 50%) !important;background:-ms-linear-gradient(top,#222 0%,#333 50%) !important;background:linear-gradient(top,#222 0%,#333 50%) !important;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#222,endColorstr=#333,GradientType=0 );-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#222, endColorstr=#333)";-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;min-width:750px;overflow:hidden}
-#contenedor-mapa{position:absolute;top:5px;left:5px;bottom:5px;right:5px;}
-#contenedor-mapa #map_canvas{height:100%}
-#topbar{position:absolute;top:10px;left:80px;right:50px;height:40px;z-index:10000}
-#sidebar-right{position:absolute;right:50px;top:70px;z-index:10;background:#f00}
-.nacional-edit-view label,.nacional-edit-view legend{color:#fff}
-.transparente{opacity:.95}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #666 !important;
+  background: -moz-linear-gradient(top, #555 0%, #666 50%) !important;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #555), color-stop(50%, #666)) !important;
+  background: -webkit-linear-gradient(top, #555 0%, #666 50%) !important;
+  background: -o-linear-gradient(top, #555 0%, #666 50%) !important;
+  background: -ms-linear-gradient(top, #555 0%, #666 50%) !important;
+  background: linear-gradient(top, #555 0%, #666 50%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#555,endColorstr=#666,GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#555, endColorstr=#666)";
+}
+#wrapper {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: #333 !important;
+  background: -moz-linear-gradient(top, #222 0%, #333 50%) !important;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222), color-stop(50%, #333)) !important;
+  background: -webkit-linear-gradient(top, #222 0%, #333 50%) !important;
+  background: -o-linear-gradient(top, #222 0%, #333 50%) !important;
+  background: -ms-linear-gradient(top, #222 0%, #333 50%) !important;
+  background: linear-gradient(top, #222 0%, #333 50%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#222,endColorstr=#333,GradientType=0 );
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#222, endColorstr=#333)";
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  min-width: 750px;
+  overflow: hidden;
+}
+#contenedor-mapa {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  bottom: 5px;
+  right: 5px;
+}
+#contenedor-mapa #map_canvas {
+  height: 100%;
+}
+#topbar {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  right: 50px;
+  height: 40px;
+  z-index: 10000;
+}
+#sidebar-right {
+  position: absolute;
+  right: 50px;
+  top: 70px;
+  z-index: 10;
+  background: #f00;
+}
+.nacional-edit-view label,
+.nacional-edit-view legend {
+  color: #fff;
+}
+.transparente {
+  opacity: 0.95;
+}
