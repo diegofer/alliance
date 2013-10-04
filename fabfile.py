@@ -91,6 +91,16 @@ def git_log(loc=True):
 ####################################################
 
 
+####################################################
+##              COMANDOS STYLUS                   ##
+####################################################
+
+def compilar_css():  # arreglar porque no funciona en el virtualenv en linux
+	with cd('main/static/main/app/css/stylus/'):
+		cmd = 'stylus -w -o ../ main.styl'
+		local(cmd)
+
+
 
 
 ####################################################
@@ -120,3 +130,12 @@ def versionar_home():
 # Reiniciar apache
 def restart_apache():
 	sudo("/etc/init.d/apache2 restart")
+
+
+####################################################
+##              COMANDOS OSM                      ##
+####################################################
+
+def download_tiles():
+	# coordenadas para colombia
+	local('downloadosmtiles --lat=-6.091478760833609:13.885999387771491 --lon=-95.74264549999992:-51.35787987499992 --zoom=8:10')

@@ -15,16 +15,22 @@ require.config({
         validate :  "js/libs/jquery/jquery.validate",
 
         bootstrap:  "src/bootstrap/js/bootstrap",
-        leaflet:    "src/leaflet/leaflet-src",
+       
+        leaflet:         "src/leaflet/leaflet-src",
+        leafletLabel:    "src/leaflet/leaflet.label", 
+        leafletEncoded:  "src/leaflet/Polyline.encoded",
 
         lodash:     "js/libs/backbone/lodash",
         backbone:   "js/libs/backbone/backbone",
-        tastypie:   "js/libs/backbone/backbone-tastypie",
+        tastypie:   "js/libs/backbone/backbone-tastypie",     
 
-        tpl:        "tpl",
-        text:       "js/libs/require/text", 
+        text:            "js/libs/require/text", 
+        goog:            "js/libs/require/goog",
+        async:           "js/libs/require/async",
+        propertyParser:  "js/libs/require/propertyParser",
 
         dgo:       "js/dgo",
+        tpl:       "tpl",
 
     },
 
@@ -48,7 +54,15 @@ require.config({
 
         bootstrap: {
             deps: ["jquery"],
-        }, 
+        },
+
+        leafletLabel: {
+            deps: ["leaflet"],
+        },
+
+        leafletEncoded  : {
+            deps: ["leaflet"],
+        },
 
     }
 

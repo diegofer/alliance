@@ -6,3 +6,4 @@ from modulos.db.models import Region
 class RegionForm(ModelForm):
 	class Meta:
 		model = Region
+		

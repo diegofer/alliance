@@ -1,14 +1,13 @@
 ///////////////////// IMPORTS /////////////////////
 @import "help"
+@import "variables"
+@import "clases"
 
-html
 body
-	margin 0
-	padding 0
-	height 100%
-	gradientLinear( top, #555555, 0%, #666666, 50% ) 
+	padding-top 70px
+	//gradientLinear( top, #555555, 0%, #666666, 50% ) 
 
-#wrapper
+/*#wrapper
 	position absolute
 	left 10px
 	top 10px
@@ -17,37 +16,45 @@ body
 	gradientLinear( top, #222222, 0%, #333333, 50% )
 	borderRadius 10px
 	min-width 750px
-	overflow hidden
+	overflow hidden*/
 
 
 #contenedor-mapa
 	position absolute
-	top 5px
-	left 5px
-	bottom 5px
-	right 5px
+	top 50px
+	left 0
+	bottom 0
+	right 0
+	z-index -1
 	#map_canvas
 		height 100%
-#topbar
-	position absolute
-	top 10px
-	left 80px
-	right 50px
-	height 40px
-	z-index 10000
-
-#sidebar-right
-	position absolute
-	right 50px
-	top 70px
-	z-index 10
-	background red
-
-.nacional-edit-view
-	label
-	legend
-		color #fff
 	
-.transparente
-	opacity .95
-	
+
+.caja
+	text-align center
+	//border 1px solid #999
+	span
+		color color-3
+		font-size size-7
+
+
+
+
+
+@media only screen and (min-width: 480px) {
+
+}
+
+@media only screen and (min-width: 768px) 
+	.contenido
+		position absolute
+		width 400px
+		left 20px
+		//top 100px
+
+
+@media only screen and (min-width: 1140px) 
+	.contenido
+		position absolute
+		width 400px
+

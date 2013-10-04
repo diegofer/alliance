@@ -1,97 +1,74 @@
-define([
-	'jquery',
-	'lodash',
-	'backbone',
-	'tastypie',
-	'bootstrap',
-	'gmaps',
-	'js/utils/GoogleMapsUtil',
-], 
+define(function (require) {
 
-function($, _, Backbone, tastypie, bootstrap, gmaps, Maps) {
+	"use strict";
+
+	var $                   = require('jquery'),
+		_         		    = require('lodash'),
+		Backbone            = require('backbone'),
+		tastypie            = require('tastypie'),
+		LMap                = require('dgo/maps/leaflet/LMap'),
+		RegionListItemView  = require('js/views/RegionListItemView'),
+        RegionListChartView = require('js/views/RegionListChartView'),
+
+        tpl                 = require('text!tpl/regionList.html');
 
 
    
     var RegionListView = Backbone.View.extend({
 
-    	initialize: function(argument) {
-    		console.log('Inicializando vista RegionList');
-            this.render();
-    	},
+        template: _.template(tpl),
 
-       
+
+    	initialize: function() {
+    		console.log('inicializando RegionListView');
+    		//console.log(this.collection);
+    	},
 
     	render: function() {
-            for (var i = 0; i < this.model.length; i++) {
-                var region = this.model.at(i);
-                region.set('color', Maps.colors[i])
-                this.addRegion(region);
-            };
+            this.$el.html(this.template()); 
+    		this.setRegiones();                    
     	},
 
-        addRegion: function(region) {        
-            var regionItem = new RegionListItemView({
-                model: region,
-            });
-            regionItem.on('clickEnRegion', function(event) {
-                this.trigger('clickRegion', event);
-            }, this);
+        setRegiones: function() {
+            for (var i = 0; i < this.collection.length; i++) {
+                var region = this.collection.at(i);
+                region.set('color', LMap.colors[i] );
+                this.addRegion(region);
+            };
+
+            this.setGrafico();
+        },
+        
+    	addRegion: function(region) {
+    		var regionListItemView = new RegionListItemView({
+    			model: region,
+    		});
+    		regionListItemView.render();
+            regionListItemView.on('overEnRegion', this.alOverRegion, this);
+            regionListItemView.on('outEnRegion', this.alOutRegion, this);
+    	},
+
+        alOverRegion: function(event) {
+            this.regionListChartView.selectRegion(event);
         },
 
-        showRegion: function(id) {        
-            _.each(Maps.regionPolyArray, function(regionPoly){
-                if (regionPoly.id == id) {
-                    regionPoly.setVisible(true);
-                } else{
-                    regionPoly.setVisible(false);
-                }; 
-            })
+        alOutRegion: function() {
+            this.regionListChartView.deselectRegion();
         },
-
-    });
-
-
+        
+        
 
 
-
-    var RegionListItemView = Backbone.View.extend({
-
-
-        initialize: function() { 
-            this.render();            
+        setGrafico: function() {
+            this.regionListChartView = new RegionListChartView({
+                el:          this.$el.find('#content-grafico'), 
+                collection:  this.collection,
+            });  
         },
-
-        render: function(event) {        
-            this.setRegion();
-        },
-
-        ////  SETEAR REGIONES  //////
-
-        setRegion: function() {
-            var self = this;
-
-            var poly = Maps.setPolygono({
-                'path':        Maps.decode( this.model.get('path') ),
-                'id':          this.model.id,
-                'fillColor':   this.model.get('color'),//Math.floor(Math.random()*16777215).toString(16),
-                'strokeColor': this.model.get('color'),
-            });
-
-
-            google.maps.event.addListener(poly, 'mouseover', function(){
-                poly.setOptions({fillOpacity: 1,});
-                self.trigger("clickEnRegion", self.model.get('nombre'));
-            });
-
-            google.maps.event.addListener(poly, 'mouseout', function(){
-                poly.setOptions({fillOpacity: 0.20,});
-            });           
-
-        },
-
-        alClickPoly: function(event) {                
-            this.trigger("clickEnRegion", this.model.get('nombre'));
-        },
+        
+    	
+    	
+    	
 
     });
    

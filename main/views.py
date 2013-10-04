@@ -55,7 +55,11 @@ def home(request):
 		else:
 			msg = "usuario y/o password incorrecto"
 
-	ctx = {'form':AuthenticationForm(), 'msg':msg}
+	form = AuthenticationForm()
+	form.fields['username'].widget.attrs['class'] = "form-control"
+	form.fields['password'].widget.attrs['class'] = "form-control"
+
+	ctx = {'form':form, 'msg':msg}
 	return render_to_response('main/login.html', ctx, context_instance=RequestContext(request))
 
 def hacer_logout(request):

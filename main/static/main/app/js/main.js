@@ -17,10 +17,14 @@ require([
 	'tastypie',  
     'js/models/RegionCollection',
     'js/models/IglesiaCollection',
-    'js/views/LMapView'
+    'js/views/LMapView',
+    'js/views/PerfilView',
+    'js/views/RegionListView',
 ], 
 
-function($, bootstrap, _, Backbone, tastypie, RegionCollection, IglesiaCollection, LMapView) { 
+function($, bootstrap, _, Backbone, tastypie, 
+    RegionCollection, IglesiaCollection, LMapView, 
+    PerfilView, RegionListView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
@@ -53,7 +57,8 @@ function($, bootstrap, _, Backbone, tastypie, RegionCollection, IglesiaCollectio
     	},
 
     	routes: {
-            ""                         : "inicio",
+            ''                  : 'inicio',
+            "perfil/:id"       : "perfil"
     		//"nacional"                 : "nacional",
             //"editar/:ambito/:username" : "editar",
     		//"empleados/*path"   : "empleadoDetalle"
@@ -63,11 +68,30 @@ function($, bootstrap, _, Backbone, tastypie, RegionCollection, IglesiaCollectio
             //this.navigate(this.ambito, true);
             console.log('en Inicio');
             this.lMapView.irInicio();
+
+            var regionListView = new RegionListView({
+                el:          $('#content-left'),
+                collection:  this.regionCollection
+            });
+            regionListView.render();  // En inicio muestro todas las regiones..
             // var region = this.regionCollection.get('c2');
             // this.regionListView.showRegion(region.id);
             //this.charView = new ChartView({model:this.regionCollection});
-
         },
+
+
+        perfil: function(id) {
+            console.log('en router perfil numero: '+id);
+            var igle = this.iglesiaCollection.findWhere({codigo: id});
+            this.lMapView.irA(igle);
+
+            var perfilView = new PerfilView({
+                el: $('#content-left'),
+                model: igle,
+            });
+            perfilView.render();
+        },
+        
 
     	showView: function(selector, view) {
             if (this.currentView) this.currentView.close();

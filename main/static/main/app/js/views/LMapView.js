@@ -25,9 +25,19 @@ function($, _, Backbone, tastypie, LMap) {
 
 
         irInicio: function() {
-            LMap.moveTo(4.520855, -74.098308, 6);
+            LMap.moveTo(LMap.toLatLng('4.520855, -74.098308'), 6);
         },
-        
+
+
+        irA: function(data) {
+
+            var latlng = LMap.toLatLng(data.get('geolocation'));
+
+            LMap.moveTo(latlng, data.get('zoom'));
+            LMap.crearMarker(latlng);
+        },
+
+
            	
     	
 

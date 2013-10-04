@@ -5,25 +5,15 @@
 {% block css %}
 	<link rel="stylesheet" href="{{STATIC_URL}}main/app/css/main.css">
     <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/leaflet/leaflet.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/leaflet/leaflet.label.css">
 {% endblock css %}
 
 {% block body %} 
 
-<div id="wrapper">
 
-	<div id="contenedor-mapa">
-		<div id="map_canvas">
-                   
-        </div>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-	</div>
-
-
-
-
-	<div id="topbar">
-
-        <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
 
             <div class="navbar-header">
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -48,7 +38,10 @@
                 <ul class="nav navbar-nav navbar-right">
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profie  <b class="caret"></b></a>
+                        <a href="#perfil/{{iglesia.codigo}}" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-map-marker"></span>
+                            {{user}}  <b class="caret"></b>
+                        </a>
 
                         <ul class="dropdown-menu">
                             <li>
@@ -67,36 +60,32 @@
                 </ul>
 
             </div>
+        </div>  <!-- end container navbar -->
 
+    </div> <!-- end navbar -->
+
+    <div id="contenedor-mapa">
+        <div id="map_canvas">
+                   
         </div>
-                
+    </div>   <!-- end contenedor-mapa -->
 
-    </div> <!-- end topbar -->
 
-    <div id="sidebar-right" style="width: 35%; height: 45%;">
+	<div class="contenido">
 
-        <!-- {{msg}}
         
-        
-        {% if user.ambito == 'local' %}   
-        
-        <div class='hero-unit'>
-            <h1>{{iglesia}}</h1>
-            <h3>{{ iglesia.user}}</h3>
-        
+        <div id="content-left">
+            
         </div>
-        
-        <form class="form-horizontal" action="." method="POST">
-            {% csrf_token %}
-            {{formUsuario.as_p}}
-        </form>
-        
-        {% endif %} -->
+       
+    </div>  <!-- end contenido -->
+   
+
+    
 
 
-    </div>
 
-</div><!-- end wrapper -->
+<!-- </div> -->   <!-- end wrapper -->
 
 <input id="ambito" type='hidden'  value='{{user.ambito}}' />
 
