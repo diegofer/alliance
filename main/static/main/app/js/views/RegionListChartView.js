@@ -9,7 +9,10 @@ function($, _, Backbone, tastypie) {
    
     var ChartView = Backbone.View.extend({
 
-        dt          : new google.visualization.DataTable(),
+        tagName: 'div',
+        id: 'content-chart',
+
+        dt          : null,
         opt         : {},
         colors      : [],
         indexRegion : {},
@@ -18,13 +21,12 @@ function($, _, Backbone, tastypie) {
 
         initialize: function() {  
         	console.log('Inicializando vista ChartView'); 
-            //this.listenTo(app.regionListView, 'clickRegion', this.selectRegion);
-            this.render();
-            //console.log(this.el);
+            this.dt = new google.visualization.DataTable();
         },
 
         render: function() { 
             this.dibujarChart();
+            return this.el;
         },
 
         dibujarChart: function() {        
@@ -46,7 +48,7 @@ function($, _, Backbone, tastypie) {
                     left:20,
                     top: 40,
                     width:"90%",
-                    height:"90%"
+                    //height:"80%"
                 },
                 pieSliceText: 'value',
                 tooltip: {
@@ -57,6 +59,7 @@ function($, _, Backbone, tastypie) {
                 slices: {},
             };
 
+            //var content = this.$el.find('#content-chart')[0];
             this.chart = new google.visualization.PieChart(this.el);
             this.chart.draw(this.dt, this.opt);
         },
@@ -64,7 +67,6 @@ function($, _, Backbone, tastypie) {
         selectRegion: function(nombre) {             
             var rowIndex = this.indexRegion[nombre];
             this.opt.slices[rowIndex] = {offset: 0.1};
-            this.chart.clearChart();
             this.chart.draw(this.dt, this.opt);
 
             this.chart.setSelection([{row:rowIndex}]);
@@ -72,9 +74,15 @@ function($, _, Backbone, tastypie) {
 
         deselectRegion: function() {
             this.opt.slices = {};
-            this.chart.clearChart();  // este metodo elimina todo, la seleccion tambien
             this.chart.draw(this.dt, this.opt);
         },
+
+
+        onClose: function() {
+            this.chart.clearChart();
+            this.chart = null;
+        },
+        
         
 
 

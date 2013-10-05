@@ -28,11 +28,11 @@ function($, bootstrap, _, Backbone, tastypie,
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
-	Backbone.View.prototype.close = function() {
-        console.log('Closing view ' + this.cid);
-        if (this.beforeClose) {
-            this.beforeClose();
-        }
+    Backbone.View.prototype.close = function() {
+        console.log('cerrando view ' + this.cid);
+
+        if (this.onClose) this.onClose();            
+
         this.remove();
         this.unbind();
     };
@@ -58,25 +58,24 @@ function($, bootstrap, _, Backbone, tastypie,
 
     	routes: {
             ''                  : 'inicio',
-            "perfil/:id"       : "perfil"
+            "perfil/:id"        : 'perfil',
+            'region/*path'      : 'regionDetalle',
     		//"nacional"                 : "nacional",
             //"editar/:ambito/:username" : "editar",
     		//"empleados/*path"   : "empleadoDetalle"
     	},
 
-        inicio: function() {
-            //this.navigate(this.ambito, true);
+        inicio: function() {          
             console.log('en Inicio');
+
             this.lMapView.irInicio();
 
             var regionListView = new RegionListView({
-                el:          $('#content-left'),
                 collection:  this.regionCollection
             });
-            regionListView.render();  // En inicio muestro todas las regiones..
-            // var region = this.regionCollection.get('c2');
-            // this.regionListView.showRegion(region.id);
-            //this.charView = new ChartView({model:this.regionCollection});
+            $('#content-left').html(regionListView.render()); // En inicio muestro todas las regiones..
+            
+            this.setView(regionListView);
         },
 
 
@@ -86,10 +85,16 @@ function($, bootstrap, _, Backbone, tastypie,
             this.lMapView.irA(igle);
 
             var perfilView = new PerfilView({
-                el: $('#content-left'),
                 model: igle,
             });
-            perfilView.render();
+            $('#content-left').html(perfilView.render());            
+
+            this.setView(perfilView);
+        },
+        
+        regionDetalle: function(id) {
+            var region = this.regionCollection.get(id);
+            console.log(region);
         },
         
 
@@ -101,6 +106,13 @@ function($, bootstrap, _, Backbone, tastypie,
 
             return view;
         },
+
+        // Settea la view nueva y cierra la view actual..
+        setView: function(view) {
+            if (this.currentView) this.currentView.close();
+            this.currentView = view;
+        },
+        
         
         
     });

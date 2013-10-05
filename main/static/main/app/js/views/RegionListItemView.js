@@ -18,7 +18,6 @@ define(function (require) {
     		//console.log(this.model);
     	},
 
-
     	render: function() {
     		this.setRegion();
     	},
@@ -26,7 +25,7 @@ define(function (require) {
 
     	setRegion: function() {
 
-    		var region = LMap.setPolygono({
+    		this.region = LMap.setPolygono({
     			latlngs:      LMap.decode(this.model.get('path')),
     			fillColor:    this.model.get('color'),
                 fillOpacity:  0.5,
@@ -34,15 +33,11 @@ define(function (require) {
                 label:        this.model.get('nombre'),
     		});
 
+            LMap.groupLayer1.addLayer(this.region);
 
-            region.on('click', this.alClick, this);
-            region.on('mouseover', this.alMouseOver, this);
-    		region.on('mouseout', this.alMouseOut, this);
-    	},
-
-
-    	alClick: function(event) {
-            console.log('click en: '+this.model.get('nombre'));
+            this.region.on('mouseover', this.alMouseOver, this);
+    		this.region.on('mouseout', this.alMouseOut, this);
+            this.region.on('click', this.alClick, this);
     	},
 
         alMouseOver: function(event) {
@@ -55,12 +50,18 @@ define(function (require) {
             this.trigger('outEnRegion');
         },
         
-        
-    	
-    	
-    	
-    	
+        alClick: function(event) {
+            app.navigate('region/'+this.model.id, {
+                trigger: true,
+                replace: true
+            });
+        },
 
+
+        onClose: function() {
+            this.region.clearAllEventListeners();
+        },
+        
 
 
     });

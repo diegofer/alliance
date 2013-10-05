@@ -7,7 +7,8 @@ define(function (require) {
     
     var LMap = {
 
-        map: null,
+        map          : null,
+        groupLayer1  : new L.LayerGroup(),
 
 
     	initMap: function(contenedor, lat, lng, zoom) {
@@ -16,23 +17,20 @@ define(function (require) {
     		var osmAttrib  = 'Map data &copy; <a target="_blank" href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     		var capa = L.tileLayer(osmUrl, { attribution: osmAttrib	});
 
-    		map = L.map(contenedor, {
+    		this.map = L.map(contenedor, {
                 center: [lat, lng],
                 zoom: zoom,
                 zoomControl: false
             });
-            map.addLayer(capa);
+            this.map.addLayer(capa);
             var controlZoom = L.control.zoom({position: 'bottomright'});
-            map.addControl(controlZoom);
-            
-               		
-
+            this.map.addControl(controlZoom);        		
     	},
 
 
         moveTo: function(latlng, zoom) {
-            map.panTo(latlng);
-            map.setZoom(zoom);
+            this.map.panTo(latlng);
+            this.map.setZoom(zoom);
         },
 
         toLatLng: function(address) {
@@ -46,7 +44,7 @@ define(function (require) {
 
 
         crearMarker: function(latlng) {
-            var marker = L.marker(latlng).addTo(map);
+            var marker = L.marker(latlng).addTo(this.map);
         },
 
 
@@ -65,8 +63,6 @@ define(function (require) {
 
             if (data.label) poly.bindLabel(data.label);
 
-
-            map.addLayer(poly);
             return poly;
         },
         

@@ -29,6 +29,7 @@ define(function(require) {
     	render: function() {
     		this.$el.html(template(this.model.attributes)); // le agrego el template a $el.
     		console.log(this.model.attributes);
+            return this.el;
     	},	
     	
 
