@@ -82,8 +82,10 @@ define(function (require) {
             _(this.childViews).each(function(view) {
                 view.close();
             });
-             // Remover las regiones del mapa... 
+             // Remover las regiones del groupLayer... 
             LMap.groupLayer1.clearLayers(); 
+            // Revomer el groupLayer del mapa
+            LMap.map.removeLayer(LMap.groupLayer1);
         },
         
         

@@ -31,9 +31,10 @@ function($, _, Backbone, tastypie, LMap) {
 
         irA: function(data) {
 
-            var latlng = LMap.toLatLng(data.get('geolocation'));
+            var latlng  = LMap.toLatLng(data.get('geolocation'));
+            var zoom    = parseInt(data.get('zoom'));
 
-            LMap.moveTo(latlng, data.get('zoom'));
+            LMap.moveTo(latlng, zoom);
             LMap.crearMarker(latlng);
         },
 

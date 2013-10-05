@@ -29,8 +29,9 @@ define(function (require) {
 
 
         moveTo: function(latlng, zoom) {
-            this.map.panTo(latlng);
-            this.map.setZoom(zoom);
+            this.map.setView(latlng, zoom, {
+                animate: true
+            });
         },
 
         toLatLng: function(address) {
@@ -54,7 +55,7 @@ define(function (require) {
         setPolygono: function(data) {
             var options = {
                 color:       data.color ? data.color : "#3F4C6B",
-                weight:      1.5,
+                weight:      data.weight ? data.weight :  1.5,
                 fillColor:   data.fillColor ? data.fillColor : "#4096EE",
                 fillOpacity: data.fillOpacity ? data.fillOpacity : 0.2,
             }

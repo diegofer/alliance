@@ -20,11 +20,12 @@ require([
     'js/views/LMapView',
     'js/views/PerfilView',
     'js/views/RegionListView',
+    'js/views/RegionView',
 ], 
 
 function($, bootstrap, _, Backbone, tastypie, 
     RegionCollection, IglesiaCollection, LMapView, 
-    PerfilView, RegionListView) { 
+    PerfilView, RegionListView, RegionView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
@@ -34,8 +35,7 @@ function($, bootstrap, _, Backbone, tastypie,
         if (this.onClose) this.onClose();            
 
         this.remove();
-        this.unbind();
-    };
+        this.unbind();    };
 
 
     var AppRouter = Backbone.Router.extend({
@@ -66,51 +66,47 @@ function($, bootstrap, _, Backbone, tastypie,
     	},
 
         inicio: function() {          
-            console.log('en Inicio');
-
-            this.lMapView.irInicio();
+             this.lMapView.irInicio();
 
             var regionListView = new RegionListView({
                 collection:  this.regionCollection
             });
-            $('#content-left').html(regionListView.render()); // En inicio muestro todas las regiones..
             
-            this.setView(regionListView);
+            this.setView($('#content-left'), regionListView);
         },
 
+        regionDetalle: function(id) {
+            var regionModel = this.regionCollection.get(id);
+
+            var regionView = new RegionView({
+                model: regionModel
+            });
+            
+            this.setView($('#content-left'), regionView);
+        },
 
         perfil: function(id) {
-            console.log('en router perfil numero: '+id);
             var igle = this.iglesiaCollection.findWhere({codigo: id});
             this.lMapView.irA(igle);
 
             var perfilView = new PerfilView({
                 model: igle,
-            });
-            $('#content-left').html(perfilView.render());            
-
-            this.setView(perfilView);
-        },
+            });          
+            
+            this.setView($('#content-left'), perfilView);
+        },        
         
-        regionDetalle: function(id) {
-            var region = this.regionCollection.get(id);
-            console.log(region);
-        },
         
 
-    	showView: function(selector, view) {
+
+        // Renderiza y registra la nueva vista y cierra la vista actual....
+        setView: function($selector, view) {
             if (this.currentView) this.currentView.close();
 
-            $(selector).html(view.render());
+            $selector.html(view.render());
             this.currentView = view;
 
             return view;
-        },
-
-        // Settea la view nueva y cierra la view actual..
-        setView: function(view) {
-            if (this.currentView) this.currentView.close();
-            this.currentView = view;
         },
         
         

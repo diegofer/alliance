@@ -6,9 +6,9 @@ define(function(require) {
 		_            = require('lodash'),
 		Backbone     = require('backbone'),
 		tastypie     = require('tastypie'),
-		tpl          = require('text!tpl/perfil.html'),
+		tpl          = require('text!tpl/perfil.html');
 
-		template     = _.template(tpl);
+	
 
 
    
@@ -22,12 +22,13 @@ define(function(require) {
     	initialize: function() {
 
     		console.log('inicializando vista PerfilView');
+            this.template = _.template(tpl);
  
     	},
 
 
     	render: function() {
-    		this.$el.html(template(this.model.attributes)); // le agrego el template a $el.
+    		this.$el.html(this.template(this.model.attributes)); // le agrego el template a $el.
     		console.log(this.model.attributes);
             return this.el;
     	},	

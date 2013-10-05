@@ -19,13 +19,13 @@ define(function (require) {
     	},
 
     	render: function() {
-    		this.setRegion();
+    		this.setRegionItem();
     	},
 
 
-    	setRegion: function() {
+    	setRegionItem: function() {
 
-    		this.region = LMap.setPolygono({
+    		this.regionItem = LMap.setPolygono({
     			latlngs:      LMap.decode(this.model.get('path')),
     			fillColor:    this.model.get('color'),
                 fillOpacity:  0.5,
@@ -33,11 +33,11 @@ define(function (require) {
                 label:        this.model.get('nombre'),
     		});
 
-            LMap.groupLayer1.addLayer(this.region);
+            LMap.groupLayer1.addLayer(this.regionItem);
 
-            this.region.on('mouseover', this.alMouseOver, this);
-    		this.region.on('mouseout', this.alMouseOut, this);
-            this.region.on('click', this.alClick, this);
+            this.regionItem.on('mouseover', this.alMouseOver, this);
+    		this.regionItem.on('mouseout', this.alMouseOut, this);
+            this.regionItem.on('click', this.alClick, this);
     	},
 
         alMouseOver: function(event) {
@@ -51,15 +51,16 @@ define(function (require) {
         },
         
         alClick: function(event) {
+            LMap.groupLayer1.removeLayer(this.regionItem); // removeLayer me ayuda a revomer el label..
             app.navigate('region/'+this.model.id, {
                 trigger: true,
-                replace: true
+                //replace: true  // replace hace que History no grabe esta vista...
             });
         },
 
 
         onClose: function() {
-            this.region.clearAllEventListeners();
+            this.regionItem.clearAllEventListeners();
         },
         
 
