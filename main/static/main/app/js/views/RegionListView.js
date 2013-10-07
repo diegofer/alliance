@@ -31,6 +31,9 @@ define(function (require) {
     	},
 
         setRegiones: function() {
+            var latLng     = LMap.toLatLng('4.520855, -78.49284');
+            LMap.setView(latLng, 6);
+
             LMap.groupLayer1.addTo(LMap.map);  // Agrego un groupLayer al mapa..
  
             for (var i = 0; i < this.collection.length; i++) {

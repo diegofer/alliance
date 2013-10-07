@@ -22,7 +22,7 @@ define(function (require) {
     		this.template  = _.template(tpl);
     		this.center    =  LMap.toLatLng(this.model.get('center'));
     		this.zoom      =  parseInt(this.model.get('zoom'));
-    		console.log(this.model);
+    		//console.log(this.model);
     	},
 
     	render: function() {
@@ -32,18 +32,18 @@ define(function (require) {
     	},
 
     	setRegion: function() {
-    		 
+    		LMap.setView(this.center, this.zoom, -150); 
+
     		this.region = LMap.setPolygono({
     			latlngs     :    LMap.decode(this.model.get('path')),
     			color       :    this.model.get('color'),
     			fillColor   :    this.model.get('color'),
-    			fillOpacity :    0.1,
+    			fillOpacity :    0.05,
     			weight      :    7,
     			label       :    this.model.get('nombre'),
     		});
 
-    		this.region.addTo(LMap.map); 
-    		LMap.moveTo(this.center, this.zoom);   		
+    		this.region.addTo(LMap.map);     		  		
     	},
 
 

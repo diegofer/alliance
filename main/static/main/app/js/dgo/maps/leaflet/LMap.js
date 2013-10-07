@@ -11,34 +11,49 @@ define(function (require) {
         groupLayer1  : new L.LayerGroup(),
 
 
-    	initMap: function(contenedor, lat, lng, zoom) {
+    	initMap: function(contenedor, options) {  //latLng, zoom) {
+            console.log('inicializando mapa');
+
     		var osmUrl     = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
             //var localUrl   = '/static/main/app/img/tiles/{z}/{x}/{y}.png';
     		var osmAttrib  = 'Map data &copy; <a target="_blank" href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     		var capa = L.tileLayer(osmUrl, { attribution: osmAttrib	});
 
     		this.map = L.map(contenedor, {
-                center: [lat, lng],
-                zoom: zoom,
-                zoomControl: false
+                zoomControl: false,
+                layers: [capa],
             });
-            this.map.addLayer(capa);
+            //this.addListeners();
+            
+            //this.map.setView(latLng, zoom);
+
             var controlZoom = L.control.zoom({position: 'bottomright'});
-            this.map.addControl(controlZoom);        		
+            this.map.addControl(controlZoom);                    		
     	},
 
+        setView: function(latLng, zoom, offsetX, offsetY) {
+            var x = offsetX ? offsetX : 0;
+            var y = offsetY ? offsetY : 0;
+            var newLatLng = this.ajustarCenter(latLng, x, y);
 
-        moveTo: function(latlng, zoom) {
-            this.map.setView(latlng, zoom, {
+            this.map.setView(newLatLng, zoom, {
                 animate: true
             });
         },
 
-        toLatLng: function(address) {
-            var point = address.split(',');
-            var latlng = new L.LatLng(parseFloat(point[0]), parseFloat(point[1]));
-            return latlng;
-        },	
+
+        addListeners: function() {
+            this.map.on('load', this.onLoad, this);
+            this.map.on('viewreset', this.onViewReset, this);
+        },
+
+            onLoad: function(evt) {
+                console.log('mapa cargado correctamente');       
+            },        
+        
+            onViewReset: function(event) {
+                console.log('evento viewreset fired');
+            },
 
 
         ////////  MARKERTS   ///////////
@@ -46,6 +61,7 @@ define(function (require) {
 
         crearMarker: function(latlng) {
             var marker = L.marker(latlng).addTo(this.map);
+            return marker;
         },
 
 
@@ -71,16 +87,27 @@ define(function (require) {
 
         ////////  UTILS   ///////////
 
+         ajustarCenter: function(latLng, offsetX, offsetY) {
+            var x = offsetX ? offsetX : 0;
+            var y = offsetY ? offsetY : 0;
+            var centerPoint     = this.map.project(latLng);
+            var newCenterPoint  = new L.Point(centerPoint.x+x, centerPoint.y+y);
+            var newCenterLatLng = this.map.unproject(newCenterPoint);
+            return newCenterLatLng;
+        },       
+
+        toLatLng: function(address) {
+            var point = address.split(',');
+            var latlng = new L.LatLng(parseFloat(point[0]), parseFloat(point[1]));
+            return latlng;
+        },  
 
         decode: function(encodePath) {
            return L.PolylineUtil.decode(encodePath);
         },
-        
-
 
         colors: new Array('#ff6600', '#0191CF', '#A21983', '#E0134F', '#5d3aa3', '#6cb33e', '#FEC425', '#999999'),
         
-
 
 
     };

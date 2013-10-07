@@ -17,15 +17,15 @@ require([
 	'tastypie',  
     'js/models/RegionCollection',
     'js/models/IglesiaCollection',
-    'js/views/LMapView',
-    'js/views/PerfilView',
+    'dgo/maps/leaflet/LMap',
     'js/views/RegionListView',
     'js/views/RegionView',
+    'js/views/PerfilView',
 ], 
 
 function($, bootstrap, _, Backbone, tastypie, 
-    RegionCollection, IglesiaCollection, LMapView, 
-    PerfilView, RegionListView, RegionView) { 
+    RegionCollection, IglesiaCollection, LMap, 
+    RegionListView, RegionView, PerfilView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
@@ -35,7 +35,8 @@ function($, bootstrap, _, Backbone, tastypie,
         if (this.onClose) this.onClose();            
 
         this.remove();
-        this.unbind();    };
+        this.unbind();   
+    };
 
 
     var AppRouter = Backbone.Router.extend({
@@ -48,26 +49,16 @@ function($, bootstrap, _, Backbone, tastypie,
     		console.log('inicializando el router');
             console.log('Ambito: '+this.ambito);
 
-            this.lMapView = new LMapView();
-
-    		//this.mapaView = new MapaView({ ambito: this.ambito });
-            //this.regionListView = new RegionListView({ model: this.regionCollection });
-
-            
+            LMap.initMap('map_canvas');          
     	},
 
     	routes: {
             ''                  : 'inicio',
             "perfil/:id"        : 'perfil',
             'region/*path'      : 'regionDetalle',
-    		//"nacional"                 : "nacional",
-            //"editar/:ambito/:username" : "editar",
-    		//"empleados/*path"   : "empleadoDetalle"
     	},
 
         inicio: function() {          
-             this.lMapView.irInicio();
-
             var regionListView = new RegionListView({
                 collection:  this.regionCollection
             });
@@ -87,8 +78,7 @@ function($, bootstrap, _, Backbone, tastypie,
 
         perfil: function(id) {
             var igle = this.iglesiaCollection.findWhere({codigo: id});
-            this.lMapView.irA(igle);
-
+            
             var perfilView = new PerfilView({
                 model: igle,
             });          
