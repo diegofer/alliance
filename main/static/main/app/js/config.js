@@ -16,9 +16,10 @@ require.config({
 
         bootstrap:  "src/bootstrap/js/bootstrap",
        
-        leaflet:         "src/leaflet/leaflet-src",
-        leafletLabel:    "src/leaflet/leaflet.label", 
-        leafletEncoded:  "src/leaflet/Polyline.encoded",
+        leaflet                   : "src/leaflet/leaflet-src",
+        leafletLabel              : "src/leaflet/leaflet.label", 
+        leafletEncoded            : "src/leaflet/Polyline.encoded",
+        'leaflet.awesome-markers' : 'src/leaflet/plugins/awesome-markers/leaflet.awesome-markers.min',
 
         lodash:     "js/libs/backbone/lodash",
         backbone:   "js/libs/backbone/backbone",
@@ -56,13 +57,9 @@ require.config({
             deps: ["jquery"],
         },
 
-        leafletLabel: {
-            deps: ["leaflet"],
-        },
-
-        leafletEncoded  : {
-            deps: ["leaflet"],
-        },
+        leafletLabel              : ['leaflet'],
+        leafletEncoded            : ['leaflet'],
+        'leaflet.awesome-markers' : ['leaflet'],
 
     }
 

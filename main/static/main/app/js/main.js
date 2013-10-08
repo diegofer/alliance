@@ -67,10 +67,12 @@ function($, bootstrap, _, Backbone, tastypie,
         },
 
         regionDetalle: function(id) {
-            var regionModel = this.regionCollection.get(id);
+            var regionModel              = this.regionCollection.get(id);
+            var iglesiaRegionCollection  = this.iglesiaCollection.where({region:id});
 
             var regionView = new RegionView({
-                model: regionModel
+                model      : regionModel,
+                collection : iglesiaRegionCollection,
             });
             
             this.setView($('#content-left'), regionView);

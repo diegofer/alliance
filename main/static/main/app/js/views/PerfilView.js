@@ -15,7 +15,7 @@ define(function(require) {
 
     	tagName    : 'div',
     	className  : 'panel',
-        center     : null,
+        latLng     : null,
         zoom       : null,
 
 
@@ -24,7 +24,7 @@ define(function(require) {
 
     		console.log('inicializando vista PerfilView');
             this.template  =  _.template(tpl);
-            this.center    =  LMap.toLatLng(this.model.get('geolocation'));
+            this.latLng    =  LMap.toLatLng(this.model.get('geolocation'));
             this.zoom      =  parseInt(this.model.get('zoom'));
  
     	},
@@ -38,9 +38,11 @@ define(function(require) {
 
 
         setPerfil: function() {
+            LMap.setView(this.latLng, this.zoom, -200);
 
-            LMap.setView(this.center, this.zoom);
-            this.marker = LMap.crearMarker(this.center);
+            this.marker = LMap.setMarker(this.latLng);
+            this.marker.setIcon(LMap.setIcon('home', 'red') );
+            this.marker.addTo(LMap.map);
         },
 
 

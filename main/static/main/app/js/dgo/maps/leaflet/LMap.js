@@ -1,8 +1,9 @@
 define(function (require) {
 
-	var L             = require('leaflet'),
-        leafletLabel  = require('leafletLabel'),
-        leafletEncoded  = require('leafletEncoded');
+	var L                          = require('leaflet'),
+        leafletLabel               = require('leafletLabel'),
+        leafletEncoded             = require('leafletEncoded'),
+        leafletAwesomeMarkers      = require('leaflet.awesome-markers');
    
     
     var LMap = {
@@ -23,10 +24,8 @@ define(function (require) {
                 zoomControl: false,
                 layers: [capa],
             });
-            //this.addListeners();
+            this.addListeners();
             
-            //this.map.setView(latLng, zoom);
-
             var controlZoom = L.control.zoom({position: 'bottomright'});
             this.map.addControl(controlZoom);                    		
     	},
@@ -34,14 +33,14 @@ define(function (require) {
         setView: function(latLng, zoom, offsetX, offsetY) {
             var x = offsetX ? offsetX : 0;
             var y = offsetY ? offsetY : 0;
-            var newLatLng = this.ajustarCenter(latLng, x, y);
+            var newLatLng = this.ajustarCenter(latLng, zoom, x, y);
 
             this.map.setView(newLatLng, zoom, {
                 animate: true
             });
         },
 
-
+        ////////  LISTENERS   ///////////
         addListeners: function() {
             this.map.on('load', this.onLoad, this);
             this.map.on('viewreset', this.onViewReset, this);
@@ -58,11 +57,21 @@ define(function (require) {
 
         ////////  MARKERTS   ///////////
 
-
-        crearMarker: function(latlng) {
-            var marker = L.marker(latlng).addTo(this.map);
+        setMarker: function(latLng) {
+            var marker = L.marker(latLng);
             return marker;
         },
+
+
+        setIcon: function(icon, color) {
+            var iconMarker = L.AwesomeMarkers.icon({
+                icon: icon, 
+                color: color
+            });
+            return iconMarker;
+        },
+        
+        
 
 
         ////////  POLYGONOS   ///////////
@@ -87,12 +96,12 @@ define(function (require) {
 
         ////////  UTILS   ///////////
 
-         ajustarCenter: function(latLng, offsetX, offsetY) {
+         ajustarCenter: function(latLng, zoom, offsetX, offsetY) {
             var x = offsetX ? offsetX : 0;
             var y = offsetY ? offsetY : 0;
-            var centerPoint     = this.map.project(latLng);
+            var centerPoint     = this.map.project(latLng,zoom);
             var newCenterPoint  = new L.Point(centerPoint.x+x, centerPoint.y+y);
-            var newCenterLatLng = this.map.unproject(newCenterPoint);
+            var newCenterLatLng = this.map.unproject(newCenterPoint, zoom);
             return newCenterLatLng;
         },       
 

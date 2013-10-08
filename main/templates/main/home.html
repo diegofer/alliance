@@ -3,9 +3,14 @@
 {% block title %} Home {% endblock %}
 
 {% block css %}
-	<link rel="stylesheet" href="{{STATIC_URL}}main/app/css/main.css">
+
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/font-awesome/css/font-awesome.min.css">	
+
     <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/leaflet/leaflet.css">
     <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/leaflet/leaflet.label.css">
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/src/leaflet/plugins/awesome-markers/leaflet.awesome-markers.css">
+
+    <link rel="stylesheet" href="{{STATIC_URL}}main/app/css/main.css">
 {% endblock css %}
 
 {% block body %} 
