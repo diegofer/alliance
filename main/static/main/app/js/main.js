@@ -21,11 +21,12 @@ require([
     'js/views/RegionListView',
     'js/views/RegionView',
     'js/views/PerfilView',
+    'js/views/IglesiaView',
 ], 
 
 function($, bootstrap, _, Backbone, tastypie, 
     RegionCollection, IglesiaCollection, LMap, 
-    RegionListView, RegionView, PerfilView) { 
+    RegionListView, RegionView, PerfilView, IglesiaView) { 
 
 
 	// Este codigo, libera la memoria al cambiar de vista...
@@ -54,8 +55,9 @@ function($, bootstrap, _, Backbone, tastypie,
 
     	routes: {
             ''                  : 'inicio',
-            "perfil/:id"        : 'perfil',
             'region/*path'      : 'regionDetalle',
+            "perfil/:id"        : 'perfil',
+            'iglesia/*path'     : 'iglesiaDetalle',
     	},
 
         inicio: function() {          
@@ -67,8 +69,8 @@ function($, bootstrap, _, Backbone, tastypie,
         },
 
         regionDetalle: function(id) {
-            var regionModel              = this.regionCollection.get(id);
-            var iglesiaRegionCollection  = this.iglesiaCollection.where({region:id});
+            var regionModel              = this.regionCollection.get('/'+id);
+            var iglesiaRegionCollection  = this.iglesiaCollection.where({region:'/'+id});
 
             var regionView = new RegionView({
                 model      : regionModel,
@@ -79,14 +81,21 @@ function($, bootstrap, _, Backbone, tastypie,
         },
 
         perfil: function(id) {
-            var igle = this.iglesiaCollection.findWhere({codigo: id});
+            console.log(id);
+            var iglesiaModel = this.iglesiaCollection.findWhere({codigo: id});
             
-            var perfilView = new PerfilView({
-                model: igle,
-            });          
+            var perfilView = new PerfilView({ model: iglesiaModel });          
             
             this.setView($('#content-left'), perfilView);
-        },        
+        }, 
+
+
+        iglesiaDetalle: function(id) {
+            var iglesiaModel = this.iglesiaCollection.get('/'+id);
+            var iglesiaView  = new IglesiaView({ model: iglesiaModel });
+            this.setView($('#content-left'), iglesiaView);
+        },
+                        
         
         
 

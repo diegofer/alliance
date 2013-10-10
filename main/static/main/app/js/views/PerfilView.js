@@ -40,8 +40,11 @@ define(function(require) {
         setPerfil: function() {
             LMap.setView(this.latLng, this.zoom, -200);
 
-            this.marker = LMap.setMarker(this.latLng);
-            this.marker.setIcon(LMap.setIcon('home', 'red') );
+            this.marker = LMap.setMarker({
+                latLng: this.latLng,
+                icon: LMap.setIcon('home', 'red')
+            });
+            
             this.marker.addTo(LMap.map);
         },
 

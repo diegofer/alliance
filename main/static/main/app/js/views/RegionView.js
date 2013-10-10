@@ -15,17 +15,17 @@ define(function (require) {
 
     	center : null,
     	zoom   : null,
-
         icon   : null,
 
 
     	initialize: function() {
     		console.log('inicializando RegionView');
-    		this.template  = _.template(tpl);
-    		this.center    =  LMap.toLatLng(this.model.get('center'));
-    		this.zoom      =  parseInt(this.model.get('zoom'));
-
-            this.icon      =  LMap.setIcon('home', 'red');
+    		this.template      =  _.template(tpl);
+    		this.center        =  LMap.toLatLng(this.model.get('center'));
+    		this.zoom          =  parseInt(this.model.get('zoom'));
+            
+            this.icon          =  LMap.setIcon('home', 'red');
+            this.childMarkers  =  [];
 
             LMap.map.on('viewreset', this.setIglesias, this);
     	},
@@ -57,30 +57,68 @@ define(function (require) {
             for (var i = 0; i < this.collection.length; i++) {
                 var iglesia = this.collection[i];
                 this.addIglesia(iglesia);
-            };
-            
+            };            
         },
 
-        addIglesia: function(iglesiaModel) {
-            console.log(iglesiaModel);
-            var geoLocation = LMap.toLatLng(iglesiaModel.get('geolocation'));
-            var iglesiaMarker = LMap.setMarker(geoLocation); 
-            iglesiaMarker.setIcon(this.icon);
+        addIglesia: function(iglesiaModel) {             
+            var iglesiaMarker = LMap.setMarker({
+                latLng : LMap.toLatLng(iglesiaModel.get('geolocation')),
+                icon   : this.icon,
+                //title  : 'sede '+iglesiaModel.get('sede') +' '+ iglesiaModel.get('ciudad'),
+                id     : iglesiaModel.id,
+            }); 
+            iglesiaMarker.bindLabel('sede '+iglesiaModel.get('sede') +' '+ iglesiaModel.get('ciudad'));
+            iglesiaMarker.bindPopup(iglesiaModel.get('codigo'));
+            iglesiaMarker.togglePopup();
+
+            iglesiaMarker.on('click', this.alClickMarker, this);
+            iglesiaMarker.on('dblclick', this.alDobleClickMarker, this);
+
             LMap.groupLayer1.addLayer(iglesiaMarker);
+
+            this.childMarkers.push(iglesiaMarker);
+        },
+
+
+        alClickMarker: function(event) {
+            //event.target.bindLabel('hola');
+        },
+        
+
+
+        alDobleClickMarker: function(event) {
+            LMap.groupLayer1.removeLayer(event.target);
+            app.navigate('iglesia'+event.target.options.id, {trigger:true})
         },
         
         
+        
 
 
 
-    	onClose: function() {
+    	onClose: function() {         
+            this.collection = [];
+            this.clearEvents();
+            this.clearLayers();            
+    	},
+
+
+        clearEvents: function() {
             LMap.map.off('viewreset', this.setIglesias, this);
-            this.collection = null;
 
+             _(this.childMarkers).each(function (marker) {
+                marker.unbindPopup();
+                marker.clearAllEventListeners();                
+            });
+        },
+
+        clearLayers: function() {
             LMap.groupLayer1.clearLayers();
             LMap.map.removeLayer(LMap.groupLayer1);
-    		LMap.map.removeLayer(this.region);
-    	},
+            LMap.map.removeLayer(this.region);
+        },
+        
+        
     	
     	
     	

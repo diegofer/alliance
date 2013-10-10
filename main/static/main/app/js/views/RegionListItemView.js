@@ -52,7 +52,7 @@ define(function (require) {
         
         alClick: function(event) {
             LMap.groupLayer1.removeLayer(this.regionItem); // removeLayer me ayuda a revomer el label..
-            app.navigate('region/'+this.model.id, {
+            app.navigate('region'+this.model.id, {
                 trigger: true,
                 //replace: true  // replace hace que History no grabe esta vista...
             });

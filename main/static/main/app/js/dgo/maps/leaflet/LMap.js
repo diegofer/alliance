@@ -11,6 +11,8 @@ define(function (require) {
         map          : null,
         groupLayer1  : new L.LayerGroup(),
 
+        iconDefault  : new L.Icon.Default(),
+
 
     	initMap: function(contenedor, options) {  //latLng, zoom) {
             console.log('inicializando mapa');
@@ -36,7 +38,10 @@ define(function (require) {
             var newLatLng = this.ajustarCenter(latLng, zoom, x, y);
 
             this.map.setView(newLatLng, zoom, {
-                animate: true
+                animate: true,
+                zoom: {
+                    animate:true
+                }
             });
         },
 
@@ -56,9 +61,24 @@ define(function (require) {
 
 
         ////////  MARKERTS   ///////////
+        
 
-        setMarker: function(latLng) {
-            var marker = L.marker(latLng);
+        getIconDefault: function(arg) {
+            return new L.Icon.Default();
+        },
+        
+
+        setMarker: function(data) {
+
+            var options = {
+                icon    : data.icon ? data.icon : this.iconDefault,
+                title   : data.title ? data.title : '',
+                opacity : 0.8,
+                id      : data.id ? data.id : null,
+            }
+
+
+            var marker = L.marker(data.latLng, options);
             return marker;
         },
 
